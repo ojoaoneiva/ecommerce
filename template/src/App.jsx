@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
 
 const Main = styled.main`
   display: grid;
-  grid-template-columns: 1fr 6fr;
+  grid-template-rows: 40px 1fr;
 `
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
   const [amount,setAmount]=useState(0);
   const [quantity,setQuantity] = useState("")
   const [screen, setScreen] = useState("Homepage");
-  // const [cont,setCont]=useState(0);
+  const [cont,setCont]=useState("");
   
   useEffect(()=>{
     const savedCart = JSON.parse(localStorage.getItem("cart"));
@@ -47,9 +47,18 @@ function App() {
     if(cart.length>0){
       localStorage.setItem("cart",JSON.stringify(cart));
       localStorage.setItem("amount",JSON.stringify(amount));
+      numberOfItems()
     }
   }, [cart]);
   
+  
+  const numberOfItems =()=>{
+    let number=0 ; for (let item of cart){
+      number+=item.quantity
+      setCont(number)
+    }
+  }
+
   const addProduct = (product) => {
     const cartContainItem = cart.find((item)=>item.name===product.name);
     if (cartContainItem){
@@ -67,7 +76,7 @@ function App() {
     else {product.quantity=0; const listaFiltrada = cart.filter((item) => item !== product); setCart(listaFiltrada); setAmount(amount-product.value)
       if(cart.length===1){
         localStorage.removeItem("cart");
-        setAmount(0)
+        setAmount(0); setCont("")
       }
     }
   }
@@ -81,7 +90,7 @@ switch (screen) {
 case "Homepage":  
 return (<></>);
 case "Cart":
-return ( <Cart cart={cart} setCart={setCart} setAmount={setAmount} amount={amount} removeProduct={removeProduct} changeScreen={changeScreen}/> );
+return ( <Cart cart={cart} setCart={setCart} setAmount={setAmount} setCont={setCont} amount={amount} removeProduct={removeProduct} changeScreen={changeScreen}/> );
 case "Finish":  
 return (<Finish changeScreen={changeScreen}/>);
 default:
@@ -91,7 +100,7 @@ return <p>Tela inválida</p>}}
   return (
     <>
     <GlobalStyle/>
-    <Header changeScreen={changeScreen}/>
+    <Header cont={cont} changeScreen={changeScreen}/>
     
     <Main>
       <Filter minFilter={minFilter} setMinFilter={setMinFilter} maxFilter={maxFilter} setMaxFilter={setMaxFilter} searchFilter={searchFilter} setSearchFilter={setSearchFilter}/>

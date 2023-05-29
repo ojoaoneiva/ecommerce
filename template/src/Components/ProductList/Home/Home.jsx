@@ -9,10 +9,10 @@ export const Home =({productsFiltered, addProduct,setCont})=>{
         <HomeStyle>
             <div>
                 <p>Quantidade de produtos: {productsFiltered.length}</p>
-        <label> Ordenação
+        <label> Ordenar por preço
             <select value={ordination} onChange={onChangeOrdination}> 
-                <option value={"crescente"}>Preço: Crescente</option>
-                <option value={"decrescente"}>Preço: Decrescente</option>
+                <option value={"crescente"}>Crescente</option>
+                <option value={"decrescente"}>Decrescente</option>
             </select>
         </label>
             </div>

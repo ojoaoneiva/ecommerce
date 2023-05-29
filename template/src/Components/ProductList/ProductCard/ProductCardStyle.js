@@ -1,25 +1,48 @@
 import {styled} from "styled-components";
 
-export const Produto = styled.figure`
-    border: 1px solid black;
-    width: 250px;
-    height: fit-content;
+export const Container = styled.figure`
+:hover{
+    
+    button{
+            background-color:black;
+            color: white;
+    }
+    figcaption{
+        /* background-color: rgb(232, 232, 232); */
+        scale: 1.05;
+    }
     img{
-        height:300px;
-        width: 248px;
+        scale: 1.05;
+    }
+}
+
+`
+export const Produto = styled.figure`
+    width: fit-content;
+    height: fit-content;
+    :hover{
+        button{
+            background-color:black;
+            color: white;
+    }
+    }
+    img{
+        height:350px;
+        width: 298px;
     }
 `
 export const Div = styled.figcaption `
     display: flex;
     flex-direction: column;
-    border-top: 1px solid black;
-    background-color: rgb(196, 196, 196);
     padding: 10px;
     align-items: flex-start;
     line-height: 30px;
     button{
         width: 60%;
+        height: 30px;
         align-self: center;
-        margin-top: 20px;
+        background-color: transparent;
+        color: transparent;
+        border: 0;
     }
 `

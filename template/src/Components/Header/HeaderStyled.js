@@ -25,6 +25,14 @@ button{
 button:hover{
     background-size: 100% 2px;
 }
+p{
+    color:white;
+    font-size: 20px;
+    font-weight: 600;
+    position: relative;
+    bottom: 30px;
+    left: 40px;
+}
 `
 export const Div = styled.div`
 z-index: 10;
@@ -51,7 +59,7 @@ export const NavBackground = styled.div`
 z-index: 5;
     width: 100vw;
     height: 60px;
-    background-color: #8f9190;
+    background-color: black;
     position: fixed;
     top: 0;
     

@@ -9,16 +9,18 @@ export const Filter = ({minFilter, setMinFilter,maxFilter,setMaxFilter, searchFi
 
     return(
         <Filtro>
-        <h2>Filtro</h2>
-        <label> Valor mínimo:
-            <input value={minFilter} onChange={onChangeMinFilter}/>
+        <h2>Produtos</h2>
+        <label>
+            <input value={searchFilter} placeholder=" Buscar" className="search" onChange={onChangeSearchFilter}/>
+            <button type="submit">search</button>
         </label>
-        <label> Valor máximo:
-            <input value={maxFilter} onChange={onChangeMaxFilter}/>
+        <label>
+            <input value={minFilter} placeholder=" Valor mínimo" className="value" onChange={onChangeMinFilter}/>
         </label>
-        <label> Buscar por nome:
-            <input value={searchFilter} onChange={onChangeSearchFilter}/>
+        <label>
+            <input value={maxFilter} placeholder=" Valor máximo" className="value" onChange={onChangeMaxFilter}/>
         </label>
+        
     </Filtro>
     )
 }

@@ -23,7 +23,7 @@ z-index: 30;
     `
 export const Div1 = styled.div`
 width: 100%;
-height: 100px;
+height: 90px;
     button:first-child{
         font-size: 50px;
         position: fixed;
@@ -53,7 +53,7 @@ height: 100px;
     } }
     `
 export const Div2 = styled.div`
-max-height: 450px;
+max-height: 460px;
 display: flex;
 flex-direction: column;
 overflow-y: auto;

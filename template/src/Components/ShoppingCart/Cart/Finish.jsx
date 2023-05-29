@@ -8,7 +8,7 @@ export const Finish =({changeScreen})=>{
             <h1>
               COMPRA FINALIZADA COM SUCESSO!  
             </h1>
-            <p>Parabéns! Sua compra foi finalizada com sucesso e em breve você poderá desbravar o Universo!</p>
+            <p>Agradecemos por comprar conosco! Você pode acompanhar seu pedido pelo link enviado no email cadastado. </p>
             <button onClick={showHomepage}>OK</button>
             </FinishMessage>
         </Background>

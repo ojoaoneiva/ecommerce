@@ -2,7 +2,7 @@ import { NavStyle, Img, Img2, Div, NavBackground } from "./HeaderStyled"
 import image1 from "../../assets/Images/mulher-pensativa-de-cabelo-encaracolado.jpg"
 import image2 from "../../assets/Images/retrato-analogico-de-homem-bonito-posando-artisticamente-ao-ar-livre.jpg"
 
-export const Header = ({changeScreen})=>{
+export const Header = ({changeScreen,cont})=>{
 const showCart = () => { changeScreen("Cart")}
 const showHomepage = () => { changeScreen("Homepage")}
 
@@ -10,12 +10,11 @@ const showHomepage = () => { changeScreen("Homepage")}
         <>
         <NavStyle>
         <button onClick={showHomepage}>Space Collection</button>
-        <button>Feminino</button>
-        <button>Masculino</button>
+        <button>Roupas</button>       
         <button>Acessórios</button>
         <button>Pesquisar</button>
         <button>Login</button>
-        <button onClick={showCart}>Carrinho</button>
+        <button onClick={showCart}>Carrinho<p>{cont}</p></button>
         </NavStyle>
         <Div>
         <Div>

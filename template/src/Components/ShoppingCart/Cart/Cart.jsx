@@ -1,10 +1,10 @@
 import { Items } from "../Items/Items"
 import { CartStyle, Background, Div1,Div2,Div3 } from "./CartStyle"
 
-export const Cart =({cart, setCart,amount, setAmount,removeProduct,changeScreen})=>{
+export const Cart =({cart, setCart,amount, setAmount, setCont, removeProduct,changeScreen})=>{
     const showHomepage = () => { changeScreen("Homepage")}
     const finish =()=>{changeScreen("Finish");
-    setCart([]); setAmount(0);
+    setCart([]); setAmount(0); setCont("");
     localStorage.removeItem("cart")}
     return(
         <Background>
