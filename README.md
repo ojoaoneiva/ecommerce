@@ -13,6 +13,11 @@ Esse é o projeto de introdução aos fundamentos do React. Aqui, vamos praticar
 
 Link do surge: ecommercefrontend-ojoaoneiva.surge.sh
 
+![1](https://github.com/ojoaoneiva/projeto-frontendreact/assets/122841627/7f1b879d-fe32-4005-9c93-3e3ac57de207)
+![2](https://github.com/ojoaoneiva/projeto-frontendreact/assets/122841627/a20d1297-f1f7-4f18-bdb7-57e166f03e7d)
+![3](https://github.com/ojoaoneiva/projeto-frontendreact/assets/122841627/98330ea0-feed-4ddc-b5a1-1c810ad9cba8)
+
+
 ## Instruções
 
 O Astrodev deixou um testamento e essa foi a herança deixada pra vocês:
