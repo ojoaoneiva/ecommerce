@@ -29,6 +29,7 @@ export const Produto = styled.figure`
     img{
         height:350px;
         width: 298px;
+        background-color: #E8E8E8;
     }
 `
 export const Div = styled.figcaption `

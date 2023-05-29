@@ -29,6 +29,7 @@ function App() {
   const [quantity,setQuantity] = useState("")
   const [screen, setScreen] = useState("Homepage");
   const [cont,setCont]=useState("");
+  const [type,setType]=useState("all")
   
   useEffect(()=>{
     const savedCart = JSON.parse(localStorage.getItem("cart"));
@@ -81,18 +82,19 @@ function App() {
     }
   }
 
-  
+
 
 const changeScreen = (newScreen) => { setScreen(newScreen)}
 
 const renderScreen = () => {
 switch (screen) {
-case "Homepage":  
-return (<></>);
+
 case "Cart":
 return ( <Cart cart={cart} setCart={setCart} setAmount={setAmount} setCont={setCont} amount={amount} removeProduct={removeProduct} changeScreen={changeScreen}/> );
 case "Finish":  
 return (<Finish changeScreen={changeScreen}/>);
+case "Homepage":  
+return (<></>);
 default:
 return <p>Tela inválida</p>}}
 
@@ -100,14 +102,15 @@ return <p>Tela inválida</p>}}
   return (
     <>
     <GlobalStyle/>
-    <Header cont={cont} changeScreen={changeScreen}/>
+    <Header cont={cont} changeScreen={changeScreen} setType={setType} type={type}/>
     
     <Main>
       <Filter minFilter={minFilter} setMinFilter={setMinFilter} maxFilter={maxFilter} setMaxFilter={setMaxFilter} searchFilter={searchFilter} setSearchFilter={setSearchFilter}/>
       <Home  productsFiltered={products
       .filter((product)=>{return product.name.toLowerCase().includes(searchFilter.toLowerCase())})
       .filter((product)=>{return product.value>minFilter})
-      .filter((product)=>{return maxFilter? product.value<maxFilter: product})} 
+      .filter((product)=>{return maxFilter? product.value<maxFilter: product})
+      .filter((product)=>{return product.type.includes(type)})} 
       addProduct={addProduct}/>
       {renderScreen()}
     </Main>

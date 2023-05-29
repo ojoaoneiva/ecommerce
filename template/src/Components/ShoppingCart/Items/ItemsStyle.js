@@ -15,6 +15,7 @@ export const CartStyle = styled.section`
     }
     img{
         width: 150px;
+        background-color: #E8E8E8;
     }
     button{
         font-size: 16px;

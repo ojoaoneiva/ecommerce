@@ -11,9 +11,10 @@ position: fixed;
 top: 0;
 right: 0;
 left: 0;
-button{
+a,button{
     height: 25px;
     font-size: 16px;
+    text-decoration: none;
     color:white;
     background-color: transparent;
     border: transparent;
@@ -22,7 +23,7 @@ button{
     background-size: 0% 2px;
     transition: background-size .3s ease;
 }
-button:hover{
+a:hover,button:hover{
     background-size: 100% 2px;
 }
 p{
@@ -33,6 +34,7 @@ p{
     bottom: 30px;
     left: 40px;
 }
+
 `
 export const Div = styled.div`
 z-index: 10;
@@ -49,6 +51,7 @@ export const Img = styled.img`
     width: fit-content;
     height: 100%;
     
+    
 `
 export const Img2 = styled.img`
     width: 100%;
@@ -59,8 +62,13 @@ export const NavBackground = styled.div`
 z-index: 5;
     width: 100vw;
     height: 60px;
-    background-color: black;
+    background-color: rgb(134, 107, 73);;
     position: fixed;
     top: 0;
     
+`
+export const Filter = styled.div`
+position: relative;
+    bottom: 60px;
+    height: 60px;
 `
