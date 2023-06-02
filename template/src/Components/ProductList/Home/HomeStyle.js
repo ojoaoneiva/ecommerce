@@ -1,6 +1,7 @@
 import {styled} from "styled-components";
 
 export const HomeStyle = styled.section`
+    
     min-height: 50vh;
     padding: 20px;
     display: flex;
@@ -20,5 +21,11 @@ export const HomeStyle = styled.section`
             font-size: 16px;
         }
 } 
+@media screen and (min-device-width : 280px) and (max-device-width : 800px){
+    margin-top: 70px;
+    /* display: grid;
+    grid-template-columns: 1fr; */
+    width: 100vw;
+}
     
 `

@@ -34,38 +34,51 @@ p{
     bottom: 30px;
     left: 40px;
 }
-
 `
+
 export const Div = styled.div`
 z-index: 10;
     display: flex;
-    /* margin-top: 20px; */
+    /* min-width: 750px; */
+    
     div{
-      width: 50vw;
+        z-index: 10;
+        display: flex;
+      width: 100vw;
       height: 700px;
       overflow: hidden;
       justify-content: center;
     }
+    
+    :nth-child(1){
+        @media screen and (min-device-width : 280px) and (max-device-width : 700px) {
+            width: 0;
+        }
+    }
+    :nth-child(2){
+        @media screen and (min-device-width : 280px) and (max-device-width : 700px) {
+            min-width: 720px;
+        }
+    }
 `
+
 export const Img = styled.img`
     width: fit-content;
     height: 100%;
-    
-    
 `
 export const Img2 = styled.img`
     width: 100%;
     height: fit-content;
-    
+    min-height: 900px;
+    min-width: 700px;
 `
 export const NavBackground = styled.div`
 z-index: 5;
-    width: 100vw;
+    width: 100%;
     height: 60px;
     background-color: rgb(134, 107, 73);;
     position: fixed;
     top: 0;
-    
 `
 export const Filter = styled.div`
 position: relative;

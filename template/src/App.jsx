@@ -7,18 +7,8 @@ import {products} from './assets/productList';
 import { useEffect, useState } from 'react';
 import { Header } from './Components/Header/Header';
 import { Finish } from './Components/ShoppingCart/Cart/Finish';
-
-const GlobalStyle = createGlobalStyle`
-  *{margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  }
-`
-
-const Main = styled.main`
-  display: grid;
-  grid-template-rows: 40px 1fr;
-`
+import {GlobalStyle} from '../src/AppStyled'
+import { Main } from './Components/Main/MainStyled';
 
 function App() {
   const [minFilter,setMinFilter]=useState("");

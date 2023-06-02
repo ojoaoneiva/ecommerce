@@ -18,12 +18,12 @@ const onChangeType =(e)=>{setType(e.target.value)}
         <button onClick={showCart}>Carrinho<p>{cont}</p></button>
         </NavStyle>
         <Div>
-        <Div>
+        <div>
         <Img src={image1}/>
-        </Div>
-        <Div>
+        </div>
+        <div>
         <Img2 src={image2}/>
-        </Div>
+        </div>
          </Div>
          <NavBackground/><NavBackground/>
          <Filter id="FILTER"></Filter>
