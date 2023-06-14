@@ -4,10 +4,10 @@
 O projeto consiste em construir o front-end de um E-Commerce com produtos relacionados à temática do espaço e galáxias, e que possuísse um carrinho de compras, filtros de busca e ordenamento dos produtos.
 
 ## Objetivos:
-1 - Produtos que podem ser ordenados por preço em ordem crescente ou decrescente
-2 - Itens acessados por filtros de busca por nome e preço máximo e mínimo
-3 - Função de adicionar e remover produtos do carrinho atualizando o valor total da compra
-4 - Função para manter os produtos no carrinho quando atualizar a página.
+- Produtos que podem ser ordenados por preço em ordem crescente ou decrescente
+- Itens acessados por filtros de busca por nome e preço máximo e mínimo
+- Função de adicionar e remover produtos do carrinho atualizando o valor total da compra
+- Função para manter os produtos no carrinho quando atualizar a página.
 
 ## Deploy da aplicação com o surge:
 https://ecommercefrontend-ojoaoneiva.surge.sh/
