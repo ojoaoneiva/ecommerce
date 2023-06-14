@@ -1,6 +1,6 @@
 # [E-commerce](https://ecommercefrontend-ojoaoneiva.surge.sh/)
 
-## Sobre o Projeto
+## Sobre o Projeto:
 O projeto consiste em construir o front-end de um E-Commerce com produtos relacionados à temática do espaço e galáxias, e que possuísse um carrinho de compras, filtros de busca e ordenamento dos produtos.
 
 ## Objetivos:
@@ -14,7 +14,6 @@ https://ecommercefrontend-ojoaoneiva.surge.sh/
 
 ## Tecnologias utilizadas:
 - React JS
-- Componentes
 - Props
 - Estado
 - Renderização de listas
