@@ -7,6 +7,16 @@ export const Filtro = styled.section`
     gap: 30px;
     margin: 0 10%;
     height: 70px;
+    
+        @media screen and (min-device-width : 280px) and (max-device-width : 800px) {
+            display: grid;
+            grid-template-rows: 1fr 1fr 1fr;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            width: 80vw;
+            margin-bottom:30rem;
+        }
 
     label{
         display: flex;
@@ -22,7 +32,10 @@ export const Filtro = styled.section`
         width: 100px;
     }
     .search{
-        width: 300px;
+        width: 40vw;
+        max-width: 300px;
+    
+        
     }
     button {
   text-indent: -999px;

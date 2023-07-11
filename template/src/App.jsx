@@ -7,18 +7,9 @@ import {products} from './assets/productList';
 import { useEffect, useState } from 'react';
 import { Header } from './Components/Header/Header';
 import { Finish } from './Components/ShoppingCart/Cart/Finish';
-
-const GlobalStyle = createGlobalStyle`
-  *{margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  }
-`
-
-const Main = styled.main`
-  display: grid;
-  grid-template-rows: 40px 1fr;
-`
+import {GlobalStyle} from '../src/AppStyled'
+import { Main } from './Components/Main/MainStyled';
+import { Modal } from './Components/Header/Modal'
 
 function App() {
   const [minFilter,setMinFilter]=useState("");
@@ -91,6 +82,8 @@ switch (screen) {
 
 case "Cart":
 return ( <Cart cart={cart} setCart={setCart} setAmount={setAmount} setCont={setCont} amount={amount} removeProduct={removeProduct} changeScreen={changeScreen}/> );
+case "Modal":
+return ( <Modal changeScreen={changeScreen} cont={cont} setType={setType} type={type}/> );
 case "Finish":  
 return (<Finish changeScreen={changeScreen}/>);
 case "Homepage":  

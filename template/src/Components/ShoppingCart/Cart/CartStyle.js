@@ -10,16 +10,22 @@ z-index: 30;
     position: fixed;
     top: 0;
     right: 0;
-    height: 100%;
+    height: 100vh;
     width: 30vw;
-    animation-name: grow;
+    animation-name: growX;
     animation-duration: 0.6s;
     animation-timing-function: ease-in-out;
-    @keyframes grow {
+    @keyframes growX {
         0% {transform: translateX(30vw)}
         100% {transform: translateX(0)}
     }
-    
+    @media screen and (min-device-width : 280px) and (max-device-width : 700px) {
+            width: 100vw;
+            @keyframes growX {
+                0% {transform: translateX(100vw)}
+                100% {transform: translateX(0)}
+            }
+        }
     `
 export const Div1 = styled.div`
 width: 100%;
@@ -86,6 +92,6 @@ position: fixed;
 top: 0;
 right: 0;
 background: #00000083;
-width: 100vw;
+width: 100%;
 height: 100%;
 `
