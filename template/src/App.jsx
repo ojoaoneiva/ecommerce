@@ -9,6 +9,7 @@ import { Header } from './Components/Header/Header';
 import { Finish } from './Components/ShoppingCart/Cart/Finish';
 import {GlobalStyle} from '../src/AppStyled'
 import { Main } from './Components/Main/MainStyled';
+import { Modal } from './Components/Header/Modal'
 
 function App() {
   const [minFilter,setMinFilter]=useState("");
@@ -81,6 +82,8 @@ switch (screen) {
 
 case "Cart":
 return ( <Cart cart={cart} setCart={setCart} setAmount={setAmount} setCont={setCont} amount={amount} removeProduct={removeProduct} changeScreen={changeScreen}/> );
+case "Modal":
+return ( <Modal changeScreen={changeScreen} cont={cont} setType={setType} type={type}/> );
 case "Finish":  
 return (<Finish changeScreen={changeScreen}/>);
 case "Homepage":  

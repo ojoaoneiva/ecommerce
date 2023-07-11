@@ -1,4 +1,4 @@
-import {styled} from "styled-components";
+import { styled } from "styled-components";
 
 export const NavStyle = styled.nav`
 background-color: transparent;
@@ -11,6 +11,10 @@ position: fixed;
 top: 0;
 right: 0;
 left: 0;
+width: 100vw;
+@media screen and (min-device-width : 280px) and (max-device-width : 700px){
+    display:none;
+}
 a,button{
     height: 25px;
     font-size: 16px;
@@ -36,14 +40,37 @@ p{
 }
 `
 
+export const NavMobile = styled.nav`
+background-color: transparent;
+z-index: 15;
+display: flex;
+justify-content: space-around;
+align-items: center;
+height: 60px;
+position: fixed;
+top: 0;
+right: 0;
+left: 0;
+width: 100vw;
+a,button{
+    height: 25px;
+    font-size: 16px;
+    text-decoration: none;
+    color:white;
+    background-color: transparent;
+    border: transparent;
+}
+@media screen and (min-device-width : 701px) {
+    display:none;
+}
+`
+
 export const Div = styled.div`
 z-index: 10;
     display: flex;
-    /* min-width: 750px; */
-    
     div{
-        z-index: 10;
-        display: flex;
+    z-index: 10;
+    display: flex;
       width: 100vw;
       height: 700px;
       overflow: hidden;
@@ -57,7 +84,8 @@ z-index: 10;
     }
     :nth-child(2){
         @media screen and (min-device-width : 280px) and (max-device-width : 700px) {
-            min-width: 720px;
+            width: fit-content;
+            height: 45rem;
         }
     }
 `
@@ -74,7 +102,7 @@ export const Img2 = styled.img`
 `
 export const NavBackground = styled.div`
 z-index: 5;
-    width: 100%;
+    width: 100vw;
     height: 60px;
     background-color: rgb(134, 107, 73);;
     position: fixed;
