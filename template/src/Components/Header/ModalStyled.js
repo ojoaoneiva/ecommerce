@@ -56,7 +56,7 @@ background: #000000df;
 width: 100%;
 height: 70vh;
 animation-name: growY;
-animation-duration: 0.6s linear infinite;;
+animation-duration: 0.6s;
 animation-timing-function: ease-in-out;
     @keyframes growY {
         0% {transform: translateY(-70vh)}
