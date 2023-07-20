@@ -21,6 +21,14 @@ button{
     background-color: black;
     color: white;
 }
+@media screen and (min-device-width : 280px) and (max-device-width : 700px) {
+    width: 80%;
+    height: 70%;
+    position: fixed;
+    top: 15%;
+    right: 10%;
+    padding: 0 10%;
+}
 `
 export const Background = styled.section`
 z-index: 30;

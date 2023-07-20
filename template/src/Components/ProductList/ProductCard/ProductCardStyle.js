@@ -1,14 +1,12 @@
-import {styled} from "styled-components";
+import { styled } from "styled-components";
 
 export const Container = styled.figure`
 :hover{
-    
     button{
             background-color:black;
             color: white;
     }
     figcaption{
-        /* background-color: rgb(232, 232, 232); */
         scale: 1.05;
     }
     img{
@@ -32,7 +30,7 @@ export const Produto = styled.figure`
         background-color: #E8E8E8;
     }
 `
-export const Div = styled.figcaption `
+export const Div = styled.figcaption`
     display: flex;
     flex-direction: column;
     padding: 10px;

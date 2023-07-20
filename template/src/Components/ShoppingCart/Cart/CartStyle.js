@@ -10,8 +10,9 @@ z-index: 30;
     position: fixed;
     top: 0;
     right: 0;
-    height: 100vh;
+    height: 100%;
     width: 30vw;
+    min-width: 400px;
     animation-name: growX;
     animation-duration: 0.6s;
     animation-timing-function: ease-in-out;
@@ -25,8 +26,9 @@ z-index: 30;
                 0% {transform: translateX(100vw)}
                 100% {transform: translateX(0)}
             }
-        }
-    `
+    }
+`
+
 export const Div1 = styled.div`
 width: 100%;
 height: 90px;
@@ -47,7 +49,6 @@ height: 90px;
         0% {transform: rotate(0)}
         100% {transform: rotate(90deg)}
     }
-        
     }
     button:first-child:hover{
         animation-name: rotateX2;
@@ -57,13 +58,15 @@ height: 90px;
         0% {transform: rotate(90deg)}
         100% {transform: rotate(0)}
     } }
-    `
+`
+
 export const Div2 = styled.div`
 max-height: 460px;
 display: flex;
 flex-direction: column;
 overflow-y: auto;
 `
+
 export const Div3 = styled.div`
 width: 90%;
 height: 100px;

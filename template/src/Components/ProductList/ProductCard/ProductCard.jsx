@@ -1,16 +1,16 @@
-import { Produto, Div , Container} from "./ProductCardStyle"
+import { Produto, Div, Container } from "./ProductCardStyle"
 
-export const ProductCard =({product, addProduct})=>{
-    return(
+export const ProductCard = ({ product, addProduct }) => {
+    return (
         <Container>
-        <Produto>
-            <img src={product.imageUrl} alt="imagem produto"/>
-            <Div>
-                <h4>{product.name}</h4>
-                <p>{product.value.toFixed(2).replace(".",",")} R$</p>
-                <button onClick={()=>{addProduct(product)}}>Add ao carrinho</button>
-            </Div>
-        </Produto>
+            <Produto>
+                <img src={product.imageUrl} alt="imagem produto" />
+                <Div>
+                    <h4>{product.name}</h4>
+                    <p>{product.value.toFixed(2).replace(".", ",")} R$</p>
+                    <button onClick={() => { addProduct(product) }}>Add ao carrinho</button>
+                </Div>
+            </Produto>
         </Container>
     )
 }

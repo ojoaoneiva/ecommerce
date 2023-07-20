@@ -76,7 +76,6 @@ z-index: 10;
       overflow: hidden;
       justify-content: center;
     }
-    
     :nth-child(1){
         @media screen and (min-device-width : 280px) and (max-device-width : 700px) {
             width: 0;
@@ -91,14 +90,18 @@ z-index: 10;
 `
 
 export const Img = styled.img`
-    width: fit-content;
-    height: 100%;
+    width: 100%;
+    height: fit-content;
+    min-height: 700px;
+    min-width: 1200px;
 `
 export const Img2 = styled.img`
     width: 100%;
     height: fit-content;
     min-height: 900px;
     min-width: 700px;
+    position: relative;
+    bottom: 80px;
 `
 export const NavBackground = styled.div`
 z-index: 5;
