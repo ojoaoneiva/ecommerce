@@ -29,7 +29,5 @@ https://ecommercefrontend-ojoaoneiva.surge.sh/
 ![3](https://github.com/ojoaoneiva/projeto-frontendreact/assets/122841627/98330ea0-feed-4ddc-b5a1-1c810ad9cba8)
 
 ![5](https://github.com/ojoaoneiva/projeto-frontendreact/assets/122841627/b91949dd-265b-4e34-bdd7-8ff196e016b1)
-
 ![4](https://github.com/ojoaoneiva/projeto-frontendreact/assets/122841627/65e1984e-20f1-4b06-a594-36fdbaf285c3)
-
 ![6](https://github.com/ojoaoneiva/projeto-frontendreact/assets/122841627/7af3a578-c5b4-45bd-a3f4-38545aac77ae)
