@@ -15,6 +15,7 @@ export const Filtro = styled.section`
             flex-wrap: wrap;
             width: 80vw;
             margin-bottom:30rem;
+            margin: 0 10%;
         }
     label{
         display: flex;
