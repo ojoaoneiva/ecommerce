@@ -1,26 +1,26 @@
 # [E-commerce](https://ecommercefrontend-ojoaoneiva.surge.sh/)
 
-## Sobre o Projeto:
-O projeto consiste em construir o front-end de um E-Commerce com produtos relacionados à temática do espaço e galáxias, e que possuísse um carrinho de compras, filtros de busca e ordenamento dos produtos.
+## About:
+The project consists on building the front-end of an E-Commerce platform that includes a shopping cart, search filters, product sorting, and its products are related to the theme of "space and galaxies".
 
-## Objetivos:
-- Produtos que podem ser ordenados por preço em ordem crescente ou decrescente
-- Itens acessados por filtros de busca por nome e preço máximo e mínimo
-- Função de adicionar e remover produtos do carrinho atualizando o valor total da compra
-- Função para manter os produtos no carrinho quando atualizar a página.
+## Goals:
+- Products that can be sorted by price in ascending or descending order.
+- Items are shown through search filters by name and minimum and maximum price.
+- Function to add and remove products from the shopping cart, updating the total purchase value.
+- Function to retain products in the shopping cart when the page is refreshed.
 
-## Deploy da aplicação com o surge:
+## Aplication's deploy with surge:
 https://ecommercefrontend-ojoaoneiva.surge.sh/
 
-## Tecnologias utilizadas:
+## Technologies used:
 - React JS
 - Props
-- Estado
-- Renderização de listas
-- Renderização condicional
+- State
+- List Rendering
+- Conditional Rendering
 - localStorage
 
-## Imagens:
+## Images:
 
 ![1](https://github.com/ojoaoneiva/projeto-frontendreact/assets/122841627/7f1b879d-fe32-4005-9c93-3e3ac57de207)
 
