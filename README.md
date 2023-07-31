@@ -3,7 +3,7 @@
 ## About:
 The project consists on building the front-end of an E-Commerce platform that includes a shopping cart, search filters, product sorting, and its products are related to the theme of "space and galaxies".
 
-## Goals:
+## Functionalities:
 - Products that can be sorted by price in ascending or descending order.
 - Items are shown through search filters by name and minimum and maximum price.
 - Function to add and remove products from the shopping cart, updating the total purchase value.
