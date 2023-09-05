@@ -1,5 +1,9 @@
 # [E-commerce](https://ecommercefrontend-ojoaoneiva.surge.sh/)
 
+<p align="center">
+  <img src="./template/src/assets/Images/github/ecommerce.gif" alt="project gif" width="600">
+</p>
+
 ## About:
 The project consists on building the front-end of an E-Commerce platform that includes a shopping cart, search filters, product sorting, and its products are related to the theme of "space and galaxies".
 
@@ -42,7 +46,6 @@ The app's front-end is already deployed, but if you want to run the project in y
 ## Images:
 
 <p align="center">
-  <img src="./template/src/assets/Images/github/ecommerce.gif" alt="project gif" width="600">
   <img src="./template/src/assets/Images/github/mobile.jpg" alt="project print screen" width="600">  
   <img src="./template/src/assets/Images/github/1.png" alt="project print screen" width="600">  
   <img src="./template/src/assets/Images/github/2.png" alt="project print screen" width="600">  
