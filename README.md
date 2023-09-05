@@ -4,13 +4,32 @@
 The project consists on building the front-end of an E-Commerce platform that includes a shopping cart, search filters, product sorting, and its products are related to the theme of "space and galaxies".
 
 ## Functionalities:
-- Products that can be sorted by price in ascending or descending order.
-- Items are shown through search filters by name and minimum and maximum price.
-- Function to add and remove products from the shopping cart, updating the total purchase value.
-- Function to retain products in the shopping cart when the page is refreshed.
+- [x]  Products that can be sorted by price in ascending or descending order.
+- [x]  Items are shown through search filters by name and minimum and maximum price.
+- [x]  Function to add and remove products from the shopping cart, updating the total purchase value.
+- [x]  Function to retain products in the shopping cart when the page is refreshed.
 
-## Aplication's deploy with surge:
+## Deploy:
 https://ecommercefrontend-ojoaoneiva.surge.sh/
+
+## How to run the project:
+The app's front-end is already deployed, but if you want to run the project in your machine, follow these steps:
+
+```bash
+# Clone the project's repository:
+    git clone https://github.com/ojoaoneiva/projeto-frontendreact.git
+
+# Enter the front-end paste:
+    cd template
+
+# Install the app's dependencies:
+    npm i
+
+# Run the application:
+    npm run start
+
+# The server will start on localhost:3000
+```
 
 ## Technologies used:
 - React JS
@@ -22,12 +41,14 @@ https://ecommercefrontend-ojoaoneiva.surge.sh/
 
 ## Images:
 
-![1](https://github.com/ojoaoneiva/projeto-frontendreact/assets/122841627/7f1b879d-fe32-4005-9c93-3e3ac57de207)
+<div div align="center">
+  <img style="width: 100%;" src="./F4LIFE/imagens e icones/F4life.gif"/>
+  
+    <img src="https://github.com/ojoaoneiva/projeto-frontendreact/assets/122841627/7f1b879d-fe32-4005-9c93-3e3ac57de207" alt="4" width="600">  
+    <img src="https://github.com/ojoaoneiva/projeto-frontendreact/assets/122841627/a20d1297-f1f7-4f18-bdb7-57e166f03e7d" alt="1" width="600">
+    <img src="https://github.com/ojoaoneiva/projeto-frontendreact/assets/122841627/98330ea0-feed-4ddc-b5a1-1c810ad9cba8" alt="2" width="600">
+    <img src="https://user-images.githubusercontent.com/122841627/235406705-d5016ecd-0f46-4aff-a1df-8366e0ec3688.JPG" alt="3" width="600">
+</div>
 
-![2](https://github.com/ojoaoneiva/projeto-frontendreact/assets/122841627/a20d1297-f1f7-4f18-bdb7-57e166f03e7d)
 
-![3](https://github.com/ojoaoneiva/projeto-frontendreact/assets/122841627/98330ea0-feed-4ddc-b5a1-1c810ad9cba8)
-
-![5](https://github.com/ojoaoneiva/projeto-frontendreact/assets/122841627/b91949dd-265b-4e34-bdd7-8ff196e016b1)
-![4](https://github.com/ojoaoneiva/projeto-frontendreact/assets/122841627/65e1984e-20f1-4b06-a594-36fdbaf285c3)
-![6](https://github.com/ojoaoneiva/projeto-frontendreact/assets/122841627/7af3a578-c5b4-45bd-a3f4-38545aac77ae)
+![mobile2](https://github.com/ojoaoneiva/projeto-frontendreact/assets/122841627/dd6f8bdc-f879-4ef3-b2dd-ff4b638442f0)
