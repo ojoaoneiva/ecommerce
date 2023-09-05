@@ -44,7 +44,7 @@ The app's front-end is already deployed, but if you want to run the project in y
 <p align="center">
   <img src="./template/src/assets/Images/github/ecommerce.gif" alt="project gif" width="600">
   <img src="./template/src/assets/Images/github/mobile.jpg" alt="project print screen" width="600">  
-  <img src="./template/src/assets/Images/github/1.jpg" alt="project print screen" width="600">  
-  <img src="./template/src/assets/Images/github/2.jpg" alt="project print screen" width="600">  
-  <img src="./template/src/assets/Images/github/3.jpg" alt="project print screen" width="600">  
+  <img src="./template/src/assets/Images/github/1.png" alt="project print screen" width="600">  
+  <img src="./template/src/assets/Images/github/2.png" alt="project print screen" width="600">  
+  <img src="./template/src/assets/Images/github/3.png" alt="project print screen" width="600">  
 </p>
