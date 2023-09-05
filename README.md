@@ -42,7 +42,6 @@ The app's front-end is already deployed, but if you want to run the project in y
 ## Images:
 
 <div div align="center">
-  <img style="width: 100%;" src="./F4LIFE/imagens e icones/F4life.gif"/>
   
     <img src="https://github.com/ojoaoneiva/projeto-frontendreact/assets/122841627/7f1b879d-fe32-4005-9c93-3e3ac57de207" alt="4" width="600">  
     <img src="https://github.com/ojoaoneiva/projeto-frontendreact/assets/122841627/a20d1297-f1f7-4f18-bdb7-57e166f03e7d" alt="1" width="600">
