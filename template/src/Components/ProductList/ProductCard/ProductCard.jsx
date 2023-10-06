@@ -1,8 +1,7 @@
-import { Produto, Div, Container } from "./ProductCardStyle"
+import { Produto, Div } from "./ProductCardStyle"
 
 export const ProductCard = ({ product, addProduct }) => {
     return (
-        <Container>
             <Produto>
                 <img src={product.imageUrl} alt="imagem produto" />
                 <Div>
@@ -11,6 +10,5 @@ export const ProductCard = ({ product, addProduct }) => {
                     <button onClick={() => { addProduct(product) }}>Add ao carrinho</button>
                 </Div>
             </Produto>
-        </Container>
     )
 }

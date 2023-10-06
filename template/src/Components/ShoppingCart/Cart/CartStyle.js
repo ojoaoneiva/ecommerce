@@ -1,7 +1,7 @@
-import { Styled, styled } from "styled-components"
+import { styled } from "styled-components"
 
 export const CartStyle = styled.div`
-z-index: 30;
+    z-index: 30;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -11,6 +11,7 @@ z-index: 30;
     top: 0;
     right: 0;
     height: 100%;
+    min-height: 600px;
     width: 30vw;
     min-width: 400px;
     animation-name: growX;
@@ -20,8 +21,9 @@ z-index: 30;
         0% {transform: translateX(30vw)}
         100% {transform: translateX(0)}
     }
-    @media screen and (min-device-width : 280px) and (max-device-width : 700px) {
-            width: 100vw;
+    @media screen and (min-device-width : 280px) and (max-device-width : 700px){
+            width: 100%;
+            min-width: 200px;
             @keyframes growX {
                 0% {transform: translateX(100vw)}
                 100% {transform: translateX(0)}
@@ -61,7 +63,8 @@ height: 90px;
 `
 
 export const Div2 = styled.div`
-max-height: 460px;
+height: 55vh;
+margin-bottom: 10px;
 display: flex;
 flex-direction: column;
 overflow-y: auto;

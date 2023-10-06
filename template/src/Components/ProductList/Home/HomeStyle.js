@@ -5,7 +5,7 @@ export const HomeStyle = styled.section`
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 30px;
     justify-content: center;
     margin-top: 50px;
     div{
