@@ -4,17 +4,14 @@ import multer, { Multer } from "multer";
 import { db } from "./database/knex";
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
-import jwt from 'jsonwebtoken';
 import { TokenManager } from "./TokenManager";
-// Remova a importação não utilizada
-// import { Tproducts, Tuser } from "./types";
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
 app.listen(3003, () => {
-    console.log("Servidor rodando na porta 3003");
+    console.log("Server running on Port 3003");
 });
 
 function generateUserId(): string {
@@ -31,7 +28,6 @@ const tokenManager = new TokenManager();
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Configuração do Multer para o upload de arquivos
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'src/uploads/');
@@ -43,9 +39,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-
-
-//get all users
 app.get("/users", async (req: Request, res: Response) => {
     try {
         const result = await db("users")
@@ -60,7 +53,6 @@ app.get("/users", async (req: Request, res: Response) => {
     }
 })
 
-//get all products (and products by name)
 app.get("/products", async (req: Request, res: Response) => {
     try {
         const nameToFind = req.query.name as string
@@ -83,49 +75,37 @@ app.get("/products", async (req: Request, res: Response) => {
     }
 })
 
-//create user
 app.post('/products', upload.fields([{ name: 'image1', maxCount: 1 }, { name: 'image2', maxCount: 1 }, { name: 'image3', maxCount: 1 }]), async (req, res) => {
     try {
-        // Extrair dados do corpo da requisição
         const { name, price, description, type } = req.body;
-
-        // Obter informações sobre o arquivo enviado
         const imageFiles = req.files as { [fieldname: string]: Express.Multer.File[] };
         const imageUrl1 = imageFiles['image1'];
         const imageUrl2 = imageFiles['image2'];
         const imageUrl3 = imageFiles['image3'];
 
-        // Validações de dados
         if (!name || !price || !description || !type) {
-            res.status(400).send("Campos 'name', 'price', 'description' e 'type' são obrigatórios");
+            res.status(400).send("Fields: 'name', 'price', 'description' and 'type' are required");
             return;
         }
 
-
-        // Validações de dados
-
-        // Verifique se o ID do produto já existe (você pode ajustar isso conforme necessário)
-
-        // Se tudo estiver válido, insira o novo produto no banco de dados
         await db("products").insert({
             id: generateProductsId(),
             name: name,
             price: price,
             description: description,
             type: type,
-            image_url_1: imageUrl1 ? imageUrl1[0]?.filename : "", // Substitua "default_value" pelo valor padrão desejado
+            image_url_1: imageUrl1 ? imageUrl1[0]?.filename : "",
             image_url_2: imageUrl2 ? imageUrl2[0]?.filename : "",
             image_url_3: imageUrl3 ? imageUrl3[0]?.filename : "",
         });
 
-        res.status(201).send("Produto cadastrado com sucesso");
+        res.status(201).send("Product created!");
     } catch (error: any) {
         console.log(error);
         res.status(500).send(error.message);
     }
 });
 
-//edit product by id('/products', upload.fields([{ name: 'image1', maxCount: 1 }, { name: 'image2', maxCount: 1 }]), async (req, res)
 app.put('/product/:id', upload.fields([{ name: 'image1', maxCount: 1 }, { name: 'image2', maxCount: 1 }, { name: 'image3', maxCount: 1 }]), async (req, res) => {
     try {
         const idToEdit = req.params.id;
@@ -139,28 +119,26 @@ app.put('/product/:id', upload.fields([{ name: 'image1', maxCount: 1 }, { name: 
         const imageUrl2 = imageFiles && imageFiles['image2'] ? imageFiles['image2'][0]?.filename : undefined;
         const imageUrl3 = imageFiles && imageFiles['image3'] ? imageFiles['image3'][0]?.filename : undefined;
 
-
         if (typeof newName !== "string" && typeof newName !== "undefined") {
             res.statusCode = 404;
-            throw new Error("'name' deve ser uma string");
+            throw new Error("'name' must be a string");
         }
         if (typeof parsedPrice !== "number" && typeof parsedPrice !== "undefined") {
             res.statusCode = 404;
-            throw new Error("'price' deve ser um number");
+            throw new Error("'price' must be a number");
         }
         if (typeof newDescription !== "string" && typeof newDescription !== "undefined") {
             res.statusCode = 404;
-            throw new Error("'description' deve ser uma string");
+            throw new Error("'description' must be a string");
         }
 
         const [product] = await db.raw(`
         SELECT * FROM products
         WHERE id = "${idToEdit}";
         `);
-
         if (!product) {
             res.status(404);
-            throw new Error("'id' não encontrada");
+            throw new Error("'id' not found");
         } else {
             await db.raw(`
             UPDATE products
@@ -175,7 +153,7 @@ app.put('/product/:id', upload.fields([{ name: 'image1', maxCount: 1 }, { name: 
             `);
         }
 
-        res.status(200).send({ message: "Atualização realizada com sucesso" });
+        res.status(200).send({ message: "Product updated!" });
 
     } catch (error: any) {
         console.log(error);
@@ -186,74 +164,60 @@ app.put('/product/:id', upload.fields([{ name: 'image1', maxCount: 1 }, { name: 
     }
 });
 
-
-
 app.post('/signup', async (req: Request, res: Response) => {
     try {
         const { name, email, password } = req.body;
 
-        // Validações básicas
         if (typeof name !== "string" || typeof email !== "string" || typeof password !== "string") {
-            return res.status(400).send("Campos 'name', 'email' e 'password' são obrigatórios e devem ser strings");
+            return res.status(400).send("Fields 'name', 'email' and 'password' are required and must be strings");
         }
-
-        // Verificar se o e-mail já está cadastrado
         const [existingUser] = await db("users").where({ email });
-
         if (existingUser) {
-            return res.status(409).send("E-mail já cadastrado");
+            return res.status(409).send("E-mail aready used");
         }
 
-        // Inserir novo usuário no banco de dados
         const newUser = {
             id: generateUserId(),
             name,
             email,
-            password,  // Em produção, use bcrypt para armazenar senhas de forma segura
+            password,
             created_at: new Date().toISOString()
         };
 
         await db("users").insert(newUser);
 
-        // Gerar token JWT
         const token = tokenManager.createToken({ id: newUser.id, name: newUser.name });
 
-        res.status(201).json({ message: "Cadastro realizado com sucesso", token });
+        res.status(201).json({ message: "User created!", token });
     } catch (error: any) {
         console.error(error);
         res.status(500).send(error.message);
     }
 });
-
 
 app.post("/login", async (req: Request, res: Response) => {
     try {
         const { email, password } = req.body;
 
-        // Validações básicas
         if (typeof email !== "string" || typeof password !== "string") {
-            return res.status(400).send("Campos 'email' e 'password' são obrigatórios");
+            return res.status(400).send("Campos 'email' and 'password' are required");
         }
 
-        // Buscar usuário pelo e-mail
         const [user] = await db("users").where({ email });
 
         if (!user || user.password !== password) {
-            return res.status(401).send("Credenciais inválidas");
+            return res.status(401).send("Invalid email and/or password");
         }
 
-        // Gerar token JWT
         const token = tokenManager.createToken({ id: user.id, name: user.name });
 
-        res.status(200).json({ message: "Login bem-sucedido", token });
+        res.status(200).json({ message: "Login succesfully!", token });
     } catch (error: any) {
         console.error(error);
         res.status(500).send(error.message);
     }
 });
 
-
-//delete user by id
 app.delete('/users/:id', async (req: Request, res: Response) => {
     try {
         const idToDelete = req.params.id
@@ -261,12 +225,12 @@ app.delete('/users/:id', async (req: Request, res: Response) => {
         const [user] = await db("users").where({ id: idToDelete })
         if (!user) {
             res.status(404)
-            throw new Error("'id' não encontrada")
+            throw new Error("'id' not found")
         }
 
         await db("users").del().where({ id: idToDelete })
+        res.status(200).send("User deleted!")
 
-        res.status(200).send("User apagado com sucesso")
     } catch (error: any) {
         console.log(error)
         if (res.statusCode === 200) {
@@ -276,7 +240,6 @@ app.delete('/users/:id', async (req: Request, res: Response) => {
     }
 })
 
-//delete product by id
 app.delete('/products/:id', async (req: Request, res: Response) => {
     try {
         const idToDelete = req.params.id
@@ -284,12 +247,12 @@ app.delete('/products/:id', async (req: Request, res: Response) => {
         const [product] = await db("products").where({ id: idToDelete })
         if (!product) {
             res.status(404)
-            throw new Error("'id' não encontrada")
+            throw new Error("'id' not found")
         }
 
         await db("products").del().where({ id: idToDelete })
+        res.status(200).send("Product deleted")
 
-        res.status(200).send("Produto apagado com sucesso")
     } catch (error: any) {
         console.log(error)
         if (res.statusCode === 200) {
@@ -299,8 +262,6 @@ app.delete('/products/:id', async (req: Request, res: Response) => {
     }
 })
 
-
-// get all purchases
 app.get("/purchases", async (req: Request, res: Response) => {
     try {
         const result = await db("purchases")
@@ -314,7 +275,6 @@ app.get("/purchases", async (req: Request, res: Response) => {
     }
 })
 
-// get purchases by id
 app.get("/purchases/:id", async (req: Request, res: Response) => {
     try {
         const idToFind = req.params.id as string
@@ -326,12 +286,14 @@ app.get("/purchases/:id", async (req: Request, res: Response) => {
                     "total_price AS totalPrice",
                     "created_at AS createdAt"
                 ).where({ id: idToFind })
+
             const [buyer] = await db("users").where({ id: purchase.buyerId })
             purchase.buyerName = buyer.name
             purchase.buyerEmail = buyer.email
 
             const purchasedProducts = await db("purchases_products").where({ purchase_id: idToFind })
             const productCompleteInfo = []
+
             for (let product of purchasedProducts) {
                 const [productInfo] = await db("products").where({ id: product.product_id })
                 productCompleteInfo.push({ ...productInfo, quantity: product.quantity })
@@ -357,19 +319,17 @@ app.get("/purchases/:id", async (req: Request, res: Response) => {
     }
 })
 
-// create purchase
 app.post('/purchases', async (req: Request, res: Response) => {
     try {
         const { buyer, products } = req.body;
 
-        // Validações de dados
         if (!buyer || !products || !Array.isArray(products) || products.length === 0) {
-            res.status(400).send("Campos 'buyer' e 'products' são obrigatórios e 'products' deve ser uma lista não vazia");
+            res.status(400).send("Fields 'buyer' and 'products' are required and 'products' must be a array with at least one element");
             return;
         }
         if (typeof buyer !== "string") {
             res.statusCode = 404
-            throw new Error("'buyer' deve ser uma string")
+            throw new Error("'buyer' must be a string")
         }
 
         let newProducts = []
@@ -410,7 +370,6 @@ app.post('/purchases', async (req: Request, res: Response) => {
 }
 )
 
-//delete purchase by id
 app.delete('/purchases/:id', async (req: Request, res: Response) => {
     try {
         const idToDelete = req.params.id
@@ -422,13 +381,13 @@ app.delete('/purchases/:id', async (req: Request, res: Response) => {
 
         if (!purchase) {
             res.status(404)
-            throw new Error("'id' não encontrada")
+            throw new Error("'id' not found")
         }
         await db.raw(`
         DELETE FROM purchases
         WHERE id = "${idToDelete}";
         `)
-        res.status(200).send({ message: "Purchase deletada com sucesso" })
+        res.status(200).send({ message: "Purchase deleted" })
 
     } catch (error: any) {
         console.log(error)

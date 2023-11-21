@@ -1,4 +1,7 @@
 import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 export interface TokenPayload {
     id: string,
@@ -9,10 +12,7 @@ export class TokenManager {
     public createToken = (payload: TokenPayload): string => {
         const token = jwt.sign(
             payload,
-            "JOAO123" ,
-            // {
-            //     expiresIn: process.env.JWT_EXPIRES_IN
-            // }
+            process.env.JWT_KEY as string,
         )
         return token
     }
@@ -21,9 +21,8 @@ export class TokenManager {
         try {
             const payload = jwt.verify(
                 token,
-                "JOAO123"
+                process.env.JWT_KEY as string,
             )
-
             return payload as TokenPayload
 				} catch (error) {
             return null

@@ -1,9 +1,12 @@
 import { knex } from "knex"
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 export const db = knex({
     client: "sqlite3",
     connection: {
-        filename: "./src/database/labecommerce.db",  //localização do seu arquivo .db
+        filename: process.env.DB_FILE_PATH as string,
 },
     useNullAsDefault: true, 
     pool: {
@@ -11,6 +14,6 @@ export const db = knex({
         max: 1,
 afterCreate: (conn: any, cb: any) => {
             conn.run("PRAGMA foreign_keys = ON", cb)
-        } // configurando para o knex forçar o check das constrainst FK
+        }
     }
 })
