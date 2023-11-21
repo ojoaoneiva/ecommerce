@@ -22,7 +22,8 @@ export const CartStyle = styled.div`
         100% {transform: translateX(0)}
     }
     @media screen and (min-device-width : 280px) and (max-device-width : 700px){
-            width: 100%;
+            width: 90%;
+            padding: 5%;
             min-width: 200px;
             @keyframes growX {
                 0% {transform: translateX(100vw)}
@@ -33,17 +34,22 @@ export const CartStyle = styled.div`
 
 export const Div1 = styled.div`
 width: 100%;
-height: 90px;
+margin-bottom: 20px;
+display: flex;
+h2{
+    font-size: 16px;
+    font-weight: normal;
+}
     button:first-child{
-        font-size: 50px;
+        font-size: 30px;
         position: fixed;
         border: transparent;
         rotate: 45deg;
-        top: 0;
-        right: 0;
+        top: 20px;
+        right: 20px;
         background-color: transparent;
-        width: 100px;
-        height: 100px;
+        width: 50px;
+        height: 50px;
         animation-name: rotateX1;
         animation-duration: 0.4s;
         animation-timing-function: ease-in-out;
@@ -72,13 +78,12 @@ overflow-y: auto;
 
 export const Div3 = styled.div`
 width: 90%;
-height: 100px;
 border-top: 1px solid rgb(179, 179, 179);;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
 position: absolute;
-bottom: 30px;
+bottom: 80px;
 right: 20px;
 button:first-child{
     height: 50px;

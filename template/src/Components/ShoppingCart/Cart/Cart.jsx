@@ -13,16 +13,16 @@ export const Cart = ({ cart, setCart, amount, setAmount, setCont, removeProduct,
             <CartStyle>
                 <Div1>
                     <button onClick={showHomepage}>+</button>
-                    <h2>Cart</h2>
+                    <h2>Shopping cart</h2>
                 </Div1>
                 <Div2>
                     {cart.map((product, index) => { return (<Items product={product} key={index} removeProduct={removeProduct} />) })}
                 </Div2>
                 <Div3>
-                    <p>Valor Total: {amount.toFixed(2).replace(".", ",")}</p>
+                    <p>Total Amount: {amount} EUR</p>
                     <div>
-                        <button onClick={showHomepage}>continue comprando</button>
-                        <button onClick={finish}>Finalizar compra</button>
+                        <button onClick={showHomepage}>Continue Shopping</button>
+                        <button onClick={finish}>Finish Purchase</button>
                     </div>
                 </Div3>
             </CartStyle>

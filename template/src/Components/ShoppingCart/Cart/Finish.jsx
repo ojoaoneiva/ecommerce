@@ -6,9 +6,10 @@ export const Finish = ({ changeScreen }) => {
         <Background>
             <FinishMessage>
                 <h1>
-                    COMPRA FINALIZADA COM SUCESSO!
+                    PURCHASE COMPLETED SUCCESSFULLY!
                 </h1>
-                <p>Agradecemos por comprar conosco! Você pode acompanhar seu pedido pelo link enviado no email cadastado. </p>
+                <p>Thank you for choosing us! We hope you enjoy your purchase.</p>
+
                 <button onClick={showHomepage}>OK</button>
             </FinishMessage>
         </Background>

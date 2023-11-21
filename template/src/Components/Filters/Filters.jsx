@@ -1,4 +1,4 @@
-import { Filtro } from "./FiltersStyle"
+import { Container } from "./FiltersStyle"
 import searchImage from "../../assets/Images/icons/search.png"
 
 export const Filter = ({ minFilter, setMinFilter, maxFilter, setMaxFilter, searchFilter, setSearchFilter }) => {
@@ -8,18 +8,18 @@ export const Filter = ({ minFilter, setMinFilter, maxFilter, setMaxFilter, searc
     const onChangeMaxFilter = (e) => { setMaxFilter(e.target.value) }
 
     return (
-        <Filtro>
-            <h2>Produtos</h2>
+        <Container>
+            <h2>Products</h2>
             <label>
-                <input value={searchFilter} placeholder=" Buscar" className="search" onChange={onChangeSearchFilter} />
+                <input value={searchFilter} placeholder="Search" className="search" onChange={onChangeSearchFilter} />
                 <button type="submit"> <img src={searchImage} /> </button>
             </label>
             <label>
-                <input value={minFilter} placeholder=" Valor mínimo" className="value" onChange={onChangeMinFilter} />
+                <input value={minFilter} placeholder="Minimum value" className="value" onChange={onChangeMinFilter} />
             </label>
             <label>
-                <input value={maxFilter} placeholder=" Valor máximo" className="value" onChange={onChangeMaxFilter} />
+                <input value={maxFilter} placeholder="Maximum value" className="value" onChange={onChangeMaxFilter} />
             </label>
-        </Filtro>
+        </Container>
     )
 }
