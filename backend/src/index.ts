@@ -5,13 +5,16 @@ import { db } from "./database/knex";
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
 import { TokenManager } from "./TokenManager";
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.listen(3003, () => {
-    console.log("Server running on Port 3003");
+app.listen(Number(process.env.PORT), () => {
+    console.log(`Server running on Port ${Number(process.env.PORT)}`);
 });
 
 function generateUserId(): string {
