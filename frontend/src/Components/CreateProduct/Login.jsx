@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { goToSignUp, goToCreateProduct, goToHome } from "../router/Coordinator";
 import { useContext } from "react";
 import { GlobalContext } from '../../Components/contexts/GlobalContext';
+import { BASE_URL } from "../constants/BASE_URL";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -42,7 +43,7 @@ export const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3003/login", userCredentials);
+      const response = await axios.post(`${BASE_URL}/login`, userCredentials);
       setShowSuccessPopup(true);
       localStorage.setItem("Etoken", response.data.token);
       setTimeout(() => {

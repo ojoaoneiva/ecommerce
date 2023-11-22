@@ -1,4 +1,5 @@
 import { CartStyle } from "./ItemsStyle"
+import { BASE_URL } from "../../constants/BASE_URL";
 
 export const Items = ({ product, removeProduct }) => {
 
@@ -7,7 +8,7 @@ export const Items = ({ product, removeProduct }) => {
             <CartStyle>
                 <img
                     className="image-main"
-                    src={`http://localhost:3003/uploads/${product.image_url_1}`}
+                    src={`${BASE_URL}/uploads/${product.image_url_1}`}
                     alt={product.name}
                 />
                 <div>

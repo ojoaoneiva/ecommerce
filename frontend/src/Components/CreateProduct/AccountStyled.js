@@ -61,6 +61,14 @@ export const Container = styled.div`
   }
 `;
 
+export const Div = styled.div`
+    display: flex;
+    flex-direction: column;
+    p{
+      margin-bottom: -30px;
+    }
+`
+
 export const Form = styled.form`
   display: flex;
   flex-direction: column;

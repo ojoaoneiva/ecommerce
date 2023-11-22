@@ -78,16 +78,12 @@ app.get("/products", async (req: Request, res: Response) => {
     }
 })
 
-app.post('/products', upload.fields([{ name: 'image1', maxCount: 1 }, { name: 'image2', maxCount: 1 }, { name: 'image3', maxCount: 1 }]), async (req, res) => {
+app.post('/products', async (req, res) => {
     try {
-        const { name, price, description, type } = req.body;
-        const imageFiles = req.files as { [fieldname: string]: Express.Multer.File[] };
-        const imageUrl1 = imageFiles['image1'];
-        const imageUrl2 = imageFiles['image2'];
-        const imageUrl3 = imageFiles['image3'];
+        const { name, price, description, type, imageURL1, imageURL2, imageURL3 } = req.body;
 
         if (!name || !price || !description || !type) {
-            res.status(400).send("Fields: 'name', 'price', 'description' and 'type' are required");
+            res.status(400).send("Fields: 'name', 'price', 'description', and 'type' are required");
             return;
         }
 
@@ -97,9 +93,9 @@ app.post('/products', upload.fields([{ name: 'image1', maxCount: 1 }, { name: 'i
             price: price,
             description: description,
             type: type,
-            image_url_1: imageUrl1 ? imageUrl1[0]?.filename : "",
-            image_url_2: imageUrl2 ? imageUrl2[0]?.filename : "",
-            image_url_3: imageUrl3 ? imageUrl3[0]?.filename : "",
+            image_url_1: imageURL1,
+            image_url_2: imageURL2,
+            image_url_3: imageURL3,
         });
 
         res.status(201).send("Product created!");
@@ -109,18 +105,17 @@ app.post('/products', upload.fields([{ name: 'image1', maxCount: 1 }, { name: 'i
     }
 });
 
-app.put('/product/:id', upload.fields([{ name: 'image1', maxCount: 1 }, { name: 'image2', maxCount: 1 }, { name: 'image3', maxCount: 1 }]), async (req, res) => {
+
+app.put('/product/:id', async (req, res) => {
     try {
         const idToEdit = req.params.id;
         const newName = req.body.name as string | undefined;
         const newPrice = req.body.price as number | undefined;
         const parsedPrice = Number(newPrice);
         const newDescription = req.body.description as string | undefined;
-
-        const imageFiles = req.files as { [fieldname: string]: Express.Multer.File[] };
-        const imageUrl1 = imageFiles && imageFiles['image1'] ? imageFiles['image1'][0]?.filename : undefined;
-        const imageUrl2 = imageFiles && imageFiles['image2'] ? imageFiles['image2'][0]?.filename : undefined;
-        const imageUrl3 = imageFiles && imageFiles['image3'] ? imageFiles['image3'][0]?.filename : undefined;
+        const imageURL1 = req.body.imageURL1 as string;
+        const imageURL2 = req.body.imageURL2 as string;
+        const imageURL3 = req.body.imageURL3 as string;
 
         if (typeof newName !== "string" && typeof newName !== "undefined") {
             res.statusCode = 404;
@@ -149,9 +144,9 @@ app.put('/product/:id', upload.fields([{ name: 'image1', maxCount: 1 }, { name: 
             name = "${newName || product.name}",
             price = "${isNaN(Number(parsedPrice)) ? product.price : parsedPrice as number}",
             description = "${newDescription || product.description}",
-            image_url_1 = "${imageUrl1 ? imageUrl1 : product.image_url_1}",
-            image_url_2 = "${imageUrl2 ? imageUrl2 : product.image_url_2}",
-            image_url_3 = "${imageUrl3 ? imageUrl3 : product.image_url_3}"
+            image_url_1 = "${imageURL1 || product.image_url_1}",
+            image_url_2 = "${imageURL2 || product.image_url_2}",
+            image_url_3 = "${imageURL3 || product.image_url_3}"
             WHERE id = "${idToEdit}";
             `);
         }

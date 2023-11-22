@@ -15,12 +15,20 @@ export const Background = styled.div`
   pointer-events: none;
 `;
 
-export const Container = styled.div`
+export const Div = styled.div`
+    display: flex;
+    /* flex-direction: column; */
+    /* p{
+      margin-bottom: -30px;
+    } */
+`
+
+export const Container = styled.form`
   background-color: white;
-  padding: 30px;
+  padding: 20px;
   z-index: 90;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   flex-direction: column;
   position: fixed;
   pointer-events: auto;

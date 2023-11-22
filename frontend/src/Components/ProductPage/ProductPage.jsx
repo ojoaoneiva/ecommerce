@@ -9,6 +9,7 @@ import { GlobalContext } from '../../Components/contexts/GlobalContext';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import { useRef } from 'react';
+import { BASE_URL } from "../constants/BASE_URL";
 
 export const ProductPage = () => {
     const context = useContext(GlobalContext);
@@ -35,7 +36,7 @@ export const ProductPage = () => {
 
     const fetchProducts = async () => {
         try {
-            const response = await axios.get("http://localhost:3003/products");
+            const response = await axios.get(`${BASE_URL}/products`);
             const prod = response.data;
             const filteredProducts = prod.filter((product) => product.id == id);
 
@@ -76,20 +77,20 @@ export const ProductPage = () => {
                             <Slider className="slider" ref={sliderRef} {...sliderSettings}>
                                 <img
                                     className="image-main"
-                                    src={`http://localhost:3003/uploads/${product.image_url_1}`}
+                                    src={product.image_url_1}
                                     alt={product.name}
                                 />
                                 {product.image_url_2 && (
                                     <img
                                         className="image-secondary"
-                                        src={`http://localhost:3003/uploads/${product.image_url_2}`}
+                                        src={product.image_url_2}
                                         alt={product.name}
                                     />
                                 )}
                                 {product.image_url_3 && (
                                     <img
                                         className="image-secondary"
-                                        src={`http://localhost:3003/uploads/${product.image_url_3}`}
+                                        src={product.image_url_3}
                                         alt={product.name}
                                     />
                                 )}

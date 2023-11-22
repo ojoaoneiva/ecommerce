@@ -1,12 +1,55 @@
+import { storage } from "./firebase";
+import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Container, Form, SuccessPopup, Background } from "./AccountStyled";
+import { Container, Form, SuccessPopup, Background, Div } from "./AccountStyled";
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 import { useContext } from "react";
 import { GlobalContext } from '../contexts/GlobalContext';
+import { BASE_URL } from "../constants/BASE_URL";
 
 export const CreateProduct = () => {
+  const [imgURLs, setImgURLs] = useState(["", "", ""]);
+  const [progressPercentages, setProgressPercentages] = useState([0, 0, 0]);
+
+  const handleImageUpload = (event, index) => {
+    const fileInput = event.target;
+
+    if (fileInput && fileInput.files && fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+
+      const storageRef = ref(storage, `images/${file.name}`);
+      const uploadTask = uploadBytesResumable(storageRef, file);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          setProgressPercentages((prevProgress) => {
+            const newProgress = [...prevProgress];
+            newProgress[index] = progress;
+            return newProgress;
+          });
+        },
+        (error) => {
+          alert(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setImgURLs((prevImgURLs) => {
+              const newImgURLs = [...prevImgURLs];
+              newImgURLs[index] = downloadURL;
+              return newImgURLs;
+            });
+          });
+        }
+      );
+    }
+  };
+
   const context = useContext(GlobalContext);
   const { checkIfAdmin, isAdmin } = context;
 
@@ -16,19 +59,17 @@ export const CreateProduct = () => {
     price: 0,
     description: "",
     type: "",
-    image1: null,
-    image2: null,
   });
 
   useEffect(() => {
-    checkIfAdmin()
+    checkIfAdmin();
   }, []);
 
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:3003/products");
+      const response = await axios.get(`${BASE_URL}/products`);
       setProducts(response.data);
     } catch (error) {
       console.error("Erro:", error);
@@ -51,49 +92,30 @@ export const CreateProduct = () => {
     });
   };
 
-  const handleFileChange1 = (e) => {
-    const file = e.target.files[0];
-    setNewProduct({
-      ...newProduct,
-      image1: file,
-    });
-  };
-
-  const handleFileChange2 = (e) => {
-    const file = e.target.files[0];
-    setNewProduct({
-      ...newProduct,
-      image2: file,
-    });
-  };
-
   const clearForm = () => {
     setNewProduct({
       name: "",
-      price: null,
+      price: 0,
       description: "",
       type: "",
-      image1: null,
-      image2: null,
     });
+    setImgURLs(["", "", ""]);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const formData = new FormData();
-      formData.append("name", newProduct.name);
-      formData.append("price", newProduct.price);
-      formData.append("description", newProduct.description);
-      formData.append("type", newProduct.type);
+      const formData = {
+        name: newProduct.name,
+        price: newProduct.price,
+        description: newProduct.description,
+        type: newProduct.type,
+        imageURL1: imgURLs[0],
+        imageURL2: imgURLs[1],
+        imageURL3: imgURLs[2],
+      };
 
-      if (newProduct.image1) {
-        formData.append("image1", newProduct.image1);
-      }
-      if (newProduct.image2) {
-        formData.append("image2", newProduct.image2);
-      }
-      await axios.post("http://localhost:3003/products", formData, {});
+      await axios.post(`${BASE_URL}/products`, formData);
 
       fetchProducts();
       setShowSuccessPopup(true);
@@ -110,14 +132,13 @@ export const CreateProduct = () => {
     <>
       <Header headerColor="dark" />
       <Container>
-
         <Form onSubmit={handleSubmit} encType="multipart/form-data">
           <h2>Add new product</h2>
           <div>
-            <p>
-              All the inputs are required.
-            </p>
-            <button className="changePage" onClick={logout}>Logout</button>
+            <p>All the inputs are required.</p>
+            <button className="changePage" onClick={logout}>
+              Logout
+            </button>
           </div>
 
           <input
@@ -154,41 +175,37 @@ export const CreateProduct = () => {
             onChange={handleInputChange}
           />
 
-          <input
-            placeholder="image1"
-            required
-            type="file"
-            accept="image/*"
-            name="image1"
-            onChange={handleFileChange1}
-          />
+          {[0, 1, 2].map((index) => (
+            <Div key={index}>
+              <input
+                type="file"
+                onChange={(event) => handleImageUpload(event, index)}
+                placeholder={`image${index + 1}`}
+              />
+              {!imgURLs[index] && <p className="progress">{progressPercentages[index]}%</p>}
+            </Div>
+          ))}
 
-          <input
-            placeholder="image2"
-            type="file"
-            accept="image/*"
-            name="image2"
-            onChange={handleFileChange2}
-          />
-          <button className="submit" type="submit">Add product</button>
+          <button className="submit" type="submit">
+            Add product
+          </button>
         </Form>
-
-        {showSuccessPopup && (
-          <>
-            <Background></Background>
-            <SuccessPopup>
-              <p>Product added succesfully!</p>
-            </SuccessPopup>
-          </>
-        )}
       </Container>
+      {showSuccessPopup && (
+        <>
+          <Background>
+            <SuccessPopup>
+              <p>Product created!</p>
+            </SuccessPopup>
+          </Background>
+        </>
+      )}
       <Footer />
     </>
   ) : (
     <>
-      <Header/>
-      <Container>
-      </Container>
+      <Header />
+      <Container></Container>
       <div>Only authorized employees can access this route.</div>
       <Footer />
     </>

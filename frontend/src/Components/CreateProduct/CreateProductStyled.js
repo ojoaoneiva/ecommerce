@@ -24,6 +24,10 @@ export const Form = styled.form`
     gap: 20px;
 `
 
+export const Div = styled.div`
+    background-color: red;
+`
+
 export const SuccessPopup = styled.div`
     z-index: 20;
     width: 20vw;

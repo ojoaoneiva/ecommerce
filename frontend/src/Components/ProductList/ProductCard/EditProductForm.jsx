@@ -1,8 +1,11 @@
+import { storage } from "../../CreateProduct/firebase";
+import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import React, { useState } from "react";
 import axios from "axios";
-import { Container, Background } from "./EditProductFormStyled";
+import { Container, Background, Div } from "./EditProductFormStyled";
 import { useContext } from "react";
 import { GlobalContext } from '../../contexts/GlobalContext';
+import { BASE_URL } from "../../constants/BASE_URL";
 
 export const EditProductForm = () => {
   const context = useContext(GlobalContext);
@@ -16,21 +19,59 @@ export const EditProductForm = () => {
   const [newName, setNewName] = useState(selectedProduct.name);
   const [newPrice, setNewPrice] = useState(selectedProduct.price);
   const [newDescription, setNewDescription] = useState(selectedProduct.description);
-  const [image1, setNewImageUrl1] = useState(selectedProduct.imageUrl1);
-  const [image2, setNewImageUrl2] = useState(selectedProduct.imageUrl2);
-  const [image3, setNewImageUrl3] = useState(selectedProduct.imageUrl3);
 
+  const [imgURLs, setImgURLs] = useState(["", "", ""]);
+  const [progressPercentages, setProgressPercentages] = useState([0, 0, 0]);
+
+  const handleImageUpload = (event, index) => {
+    const fileInput = event.target;
+
+    if (fileInput && fileInput.files && fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+
+      const storageRef = ref(storage, `images/${file.name}`);
+      const uploadTask = uploadBytesResumable(storageRef, file);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          setProgressPercentages((prevProgress) => {
+            const newProgress = [...prevProgress];
+            newProgress[index] = progress;
+            return newProgress;
+          });
+        },
+        (error) => {
+          alert(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setImgURLs((prevImgURLs) => {
+              const newImgURLs = [...prevImgURLs];
+              newImgURLs[index] = downloadURL;
+              return newImgURLs;
+            });
+          });
+        }
+      );
+    }
+  };
+  
   const editPost = async () => {
     try {
-      const formData = new FormData();
-      formData.append("name", newName || "");
-      formData.append("price", parseFloat(newPrice));
-      formData.append("description", newDescription || "");
-      formData.append("image1", image1);
-      formData.append("image2", image2);
-      formData.append("image3", image3);
-      await axios.put(`http://localhost:3003/product/${selectedProduct.id}`, formData);
-
+      const body = {
+        name: newName || "",
+        price: parseFloat(newPrice),
+        description: newDescription || "",
+        imageURL1: imgURLs[0],
+        imageURL2: imgURLs[1],
+        imageURL3: imgURLs[2]
+      }
+      await axios.put(`${BASE_URL}/product/${selectedProduct.id}` , body);
+      console.log(body)
       showHomepage();
     } catch (error) {
       console.error("Error updating product", error);
@@ -47,21 +88,6 @@ export const EditProductForm = () => {
 
   const handleNewPriceChange = (event) => {
     setNewPrice(event.target.value);
-  };
-
-  const handleFileChange1 = (e) => {
-    const file = e.target.files[0];
-    setNewImageUrl1(file);
-  };
-
-  const handleFileChange2 = (e) => {
-    const file = e.target.files[0];
-    setNewImageUrl2(file);
-  };
-
-  const handleFileChange3 = (e) => {
-    const file = e.target.files[0];
-    setNewImageUrl3(file);
   };
 
   return (
@@ -99,36 +125,18 @@ export const EditProductForm = () => {
                 onChange={handleNewDescriptionChange}
               />
             </div>
-            <div>
-              <label htmlFor="imageUrl1">Image 1:</label>
-              <input
-                className="imageUrl1"
-                type="file"
-                accept="image/*"
-                name="imageUrl1"
-                onChange={handleFileChange1}
-              />
-            </div>
-            <div>
-              <label htmlFor="imageUrl2">Image 2:</label>
-              <input
-                className="imageUrl2"
-                type="file"
-                accept="image/*"
-                name="imageUrl2"
-                onChange={handleFileChange2}
-              />
-            </div>
-            <div>
-              <label htmlFor="imageUrl3">Image 3:</label>
-              <input
-                className="imageUrl3"
-                type="file"
-                accept="image/*"
-                name="imageUrl3"
-                onChange={handleFileChange3}
-              />
-            </div>
+
+            {[0, 1, 2].map((index) => (
+              <Div key={index}>
+                <input
+                  type="file"
+                  onChange={(event) => handleImageUpload(event, index)}
+                  placeholder={`image${index + 1}`}
+                />
+                {!imgURLs[index] && <p className="progress">{progressPercentages[index]}%</p>}
+              </Div>
+            ))}
+
             <div className="buttonscontainer">
               <button className="Save" type="button" onClick={editPost}>
                 Save

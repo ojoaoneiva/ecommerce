@@ -7,6 +7,7 @@ import { goToLogin, goToHome } from "../router/Coordinator";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { GlobalContext } from '../../Components/contexts/GlobalContext';
+import { BASE_URL } from "../constants/BASE_URL";
 
 export const SignUp = () => {
 
@@ -43,7 +44,7 @@ export const SignUp = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3003/signup", userCredentials);
+      const response = await axios.post(`${BASE_URL}/signup`, userCredentials);
       console.log(response.data);
       setShowSuccessPopup(true);
 

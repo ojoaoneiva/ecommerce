@@ -10,6 +10,7 @@ import image1 from "../../../assets/Images/1.webp";
 import image2 from "../../../assets/Images/2.webp";
 import { useContext } from "react";
 import { GlobalContext } from '../../contexts/GlobalContext';
+import { BASE_URL } from "../../constants/BASE_URL";
 
 export const Home = () => {
   const { type: urlType } = useParams();
@@ -34,7 +35,7 @@ export const Home = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://localhost:3003/products');
+      const response = await axios.get(`${BASE_URL}/products`);
       setProducts(response.data);
       setIsLoading(false);
     } catch (error) {

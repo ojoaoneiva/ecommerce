@@ -10,6 +10,7 @@ import 'slick-carousel/slick/slick.css';
 import { useRef } from 'react';
 import { useContext } from "react";
 import { GlobalContext } from '../../contexts/GlobalContext';
+import { BASE_URL } from "../../constants/BASE_URL";
 
 export const ProductCard = ({ product }) => {
 
@@ -22,12 +23,17 @@ export const ProductCard = ({ product }) => {
   const sliderRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
 
+  const showHomepage = () => {
+    changeScreen("Homepage");
+  };
+  
   const handleDeleteClick = async () => {
     const isConfirmed = window.confirm("Are you sure you want to delete this product?");
 
     if (isConfirmed) {
       try {
-        await axios.delete(`http://localhost:3003/products/${product.id}`);
+        await axios.delete(`${BASE_URL}/products/${product.id}`);
+        showHomepage();
       } catch (error) {
         console.error("Error", error);
       }
@@ -86,20 +92,20 @@ export const ProductCard = ({ product }) => {
         <Slider className="slider" ref={sliderRef} {...sliderSettings}>
           <img
             className="image-main"
-            src={`http://localhost:3003/uploads/${product.image_url_1}`}
+            src={product.image_url_1}
             alt={product.name}
           />
           {product.image_url_2 && (
             <img
               className="image-secondary"
-              src={`http://localhost:3003/uploads/${product.image_url_2}`}
+              src={product.image_url_2}
               alt={product.name}
             />
           )}
           {product.image_url_3 && (
             <img
               className="image-secondary"
-              src={`http://localhost:3003/uploads/${product.image_url_3}`}
+              src={product.image_url_3}
               alt={product.name}
             />
           )}
