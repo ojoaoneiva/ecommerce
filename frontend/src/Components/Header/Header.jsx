@@ -129,7 +129,6 @@ export const Header = ({ headerColor }) => {
               <li onClick={() => handleNavigate("/T-Shirts-men")}>T-Shirts</li>
               <li onClick={() => handleNavigate("/Shirts-men")}>Shirts</li>
               <li onClick={() => handleNavigate("/Coats&Jackets-men")}>Coats & Jackets</li>
-              <li onClick={() => handleNavigate("/Denim-men")}>Denim</li>
               <li onClick={() => handleNavigate("/Suits-men")}>Suits</li>
             </ul>
           </div>
@@ -140,7 +139,6 @@ export const Header = ({ headerColor }) => {
               <li onClick={() => handleNavigate("/Hats-men")}>Hats</li>
               <li onClick={() => handleNavigate("/Jewellery&Sunglasses-men")}>Jewellery & Sunglasses</li>
               <li onClick={() => handleNavigate("/Bags-men")}>Bags</li>
-              <li onClick={() => handleNavigate("/Shoes-men")}>Shoes</li>
             </ul>
           </div>
         </Men>

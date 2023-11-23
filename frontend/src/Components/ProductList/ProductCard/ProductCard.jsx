@@ -23,17 +23,13 @@ export const ProductCard = ({ product }) => {
   const sliderRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
 
-  const showHomepage = () => {
-    changeScreen("Homepage");
-  };
-  
   const handleDeleteClick = async () => {
     const isConfirmed = window.confirm("Are you sure you want to delete this product?");
 
     if (isConfirmed) {
       try {
         await axios.delete(`${BASE_URL}/products/${product.id}`);
-        showHomepage();
+        window.location.reload();
       } catch (error) {
         console.error("Error", error);
       }

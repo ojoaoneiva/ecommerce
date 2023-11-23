@@ -19,6 +19,7 @@ export const EditProductForm = () => {
   const [newName, setNewName] = useState(selectedProduct.name);
   const [newPrice, setNewPrice] = useState(selectedProduct.price);
   const [newDescription, setNewDescription] = useState(selectedProduct.description);
+  const [newType, setNewType] = useState(selectedProduct.type);
 
   const [imgURLs, setImgURLs] = useState(["", "", ""]);
   const [progressPercentages, setProgressPercentages] = useState([0, 0, 0]);
@@ -65,7 +66,9 @@ export const EditProductForm = () => {
       const body = {
         name: newName || "",
         price: parseFloat(newPrice),
+        type: newType || "",
         description: newDescription || "",
+        
         imageURL1: imgURLs[0],
         imageURL2: imgURLs[1],
         imageURL3: imgURLs[2]
@@ -88,6 +91,10 @@ export const EditProductForm = () => {
 
   const handleNewPriceChange = (event) => {
     setNewPrice(event.target.value);
+  };
+
+  const handleNewTypeChange = (event) => {
+    setNewType(event.target.value);
   };
 
   return (
@@ -123,6 +130,16 @@ export const EditProductForm = () => {
                 name="description"
                 value={newDescription}
                 onChange={handleNewDescriptionChange}
+              />
+            </div>
+
+            <div>
+              <label htmlFor="type">Type:</label>
+              <input
+                className="type"
+                name="type"
+                value={newType}
+                onChange={handleNewTypeChange}
               />
             </div>
 

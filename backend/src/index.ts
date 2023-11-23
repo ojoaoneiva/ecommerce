@@ -112,7 +112,8 @@ app.put('/product/:id', async (req, res) => {
         const newName = req.body.name as string | undefined;
         const newPrice = req.body.price as number | undefined;
         const parsedPrice = Number(newPrice);
-        const newDescription = req.body.description as string | undefined;
+        const newDescription = req.body.description as string | undefined; 
+        const newType = req.body.type as string | undefined;
         const imageURL1 = req.body.imageURL1 as string;
         const imageURL2 = req.body.imageURL2 as string;
         const imageURL3 = req.body.imageURL3 as string;
@@ -143,6 +144,7 @@ app.put('/product/:id', async (req, res) => {
             SET
             name = "${newName || product.name}",
             price = "${isNaN(Number(parsedPrice)) ? product.price : parsedPrice as number}",
+            type = "${newType || product.type}",
             description = "${newDescription || product.description}",
             image_url_1 = "${imageURL1 || product.image_url_1}",
             image_url_2 = "${imageURL2 || product.image_url_2}",
