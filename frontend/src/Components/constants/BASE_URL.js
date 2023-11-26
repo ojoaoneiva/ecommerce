@@ -1,2 +1,2 @@
 //change to https://ecommerce-backend-80sa.onrender.com if you want to use the deployed backend or use http://localhost:3003 if you want to run the application locally. start the backend app. 
-export const BASE_URL = "http://localhost:3003";
+export const BASE_URL = "https://ecommerce-backend-80sa.onrender.com";
