@@ -19,9 +19,11 @@ export const ProductPage = () => {
     const pathParams = useParams();
     const id = pathParams.id;
     const [product, setProduct] = useState(null);
+    const [haveSize, setHaveSize] = useState(true);
 
     useEffect(() => {
         fetchProducts();
+        
     }, [id]);
 
     const sliderSettings = {
@@ -38,10 +40,22 @@ export const ProductPage = () => {
         try {
             const response = await axios.get(`${BASE_URL}/products`);
             const prod = response.data;
-            const filteredProducts = prod.filter((product) => product.id == id);
+            const filteredProduct = prod.filter((product) => product.id == id);
 
-            if (filteredProducts.length > 0) {
-                setProduct(filteredProducts[0]);
+            if (filteredProduct.length > 0) {
+                setProduct(filteredProduct[0]);
+                console.log(filteredProduct[0])
+                if(filteredProduct[0].type=="Bags-men" || 
+                filteredProduct[0].type=="Jewellery&Sunglasses-men" ||
+                filteredProduct[0].type=="Hats-men" ||
+                filteredProduct[0].type=="Hats-women" ||
+                filteredProduct[0].type=="Jewellery-women" ||
+                filteredProduct[0].type=="Sunglasses-women" ||
+                filteredProduct[0].type=="Mini-women" ||
+                filteredProduct[0].type=="Crossbody&Handbags-women" ||
+                filteredProduct[0].type=="Shoulderbags-women")
+                {setHaveSize(false)}
+                else(setHaveSize(true))
             } else {
                 console.log("Product not found");
             }
@@ -108,12 +122,14 @@ export const ProductPage = () => {
                                 {"<"}
                             </button>
                         </div>
-                        <Info selectedsize={selectedSize}>
+                        <Info selectedsize={selectedSize} haveSize={haveSize}>
                             <h4>{product.name}</h4>
                             <div>{product.description}</div>
+                            
                             <div>
                                 <p>Size</p>
-                                <ul>
+                                { haveSize ?
+                                (<ul>
                                     {sizes.map((size) => (
                                         <li
                                             key={size}
@@ -123,15 +139,20 @@ export const ProductPage = () => {
                                             {size}
                                         </li>
                                     ))}
-                                </ul>
+                                </ul>) 
+                                :
+                                (<ul>
+                                        <li> OS </li>
+                                </ul>)}
                             </div>
                             <button onClick={handleAddToCart}>
-                                {selectedSize === "" && (
+                                {selectedSize === "" && haveSize && (
                                     <>
                                         <p>Add to cart</p>
                                         <p>Select size</p>
                                     </>)}
-                                {selectedSize !== "" && (
+                                    
+                                {(selectedSize !== "" || haveSize!==true) && (
                                     <p>Add to cart</p>
                                 )}
                                 <div>{product.price} EUR</div>

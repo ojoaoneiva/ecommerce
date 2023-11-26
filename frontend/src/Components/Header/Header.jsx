@@ -114,7 +114,6 @@ export const Header = ({ headerColor }) => {
             <ul>
               <li onClick={() => handleNavigate("/Hats-women")}>Hats</li>
               <li onClick={() => handleNavigate("/Jewellery-women")}>Jewellery</li>
-              <li onClick={() => handleNavigate("/Shoes-women")}>Shoes</li>
               <li onClick={() => handleNavigate("/Sunglasses-women")}>Sunglasses</li>
             </ul>
           </div>

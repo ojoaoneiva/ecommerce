@@ -99,7 +99,6 @@ export const Modal = () => {
                   Men
                 </button>
               </li>
-              <li><button value="all" onClick={onChangeType}>Search</button></li>
               <li><button onClick={onAcount}>Account</button></li>
               <li><button onClick={showCart}>Cart<p>{cont}</p></button></li>
               <button onClick={showHomepage} className="x">+</button>
@@ -135,7 +134,6 @@ export const Modal = () => {
               <Ul isOpen2={isOpen2['AcessoriesW']}>
                 <li onClick={() => handleNavigate("/Hats-women")}>Hats</li>
                 <li onClick={() => handleNavigate("/Jewellery-women")}>Jewellery</li>
-                <li onClick={() => handleNavigate("/Shoes-women")}>Shoes</li>
                 <li onClick={() => handleNavigate("/Sunglasses-women")}>Sunglasses</li>
               </Ul>
             </div>
@@ -151,7 +149,6 @@ export const Modal = () => {
                 <li onClick={() => handleNavigate("/T-Shirts-men")}>T-Shirts</li>
                 <li onClick={() => handleNavigate("/Shirts-men")}>Shirts</li>
                 <li onClick={() => handleNavigate("/Coats&Jackets-men")}>Coats & Jackets</li>
-                <li onClick={() => handleNavigate("/Denim-men")}>Denim</li>
                 <li onClick={() => handleNavigate("/Suits-men")}>Suits</li>
               </Ul>
             </div>
@@ -162,7 +159,6 @@ export const Modal = () => {
                 <li onClick={() => handleNavigate("/Hats-men")}>Hats</li>
                 <li onClick={() => handleNavigate("/Jewellery&Sunglasses-men")}>Jewellery & Sunglasses</li>
                 <li onClick={() => handleNavigate("/Bags-men")}>Bags</li>
-                <li onClick={() => handleNavigate("/Shoes-men")}>Shoes</li>
               </Ul>
             </div>
           </Men>

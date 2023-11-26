@@ -101,7 +101,7 @@ export const Info = styled.div`
         }
     }
     button {
-        background-color: ${(props) => (props.selectedsize === "" ? "transparent" : "black")};
+        background-color: ${(props) => (props.selectedsize !== "" || props.haveSize==false ? "black" : "transparent")};
         cursor: pointer;
         border: 1px solid black;
         padding: 5px;
@@ -113,17 +113,19 @@ export const Info = styled.div`
         @media screen and (min-width : 280px) and (max-width : 750px){
             width: 80vw
         }
-        color: ${(props) => (props.selectedsize === "" ? "black" : "white")};
+        color: ${(props) => (props.selectedsize !== "" || props.haveSize==false ? "white" : "black")};
         p:nth-child(2) {
             opacity: ${(props) => (props.selectedsize === "" ? "0" : "1")};
             transition: opacity 0.3s;
         }
+        
         &:hover {
-            background-color: ${(props) => (props.selectedsize === "" ? "transparent" : "rgba(0, 0, 0, 0.9)")};
+            background-color: ${(props) => (props.selectedsize !== "" || props.haveSize==false ? "rgba(0, 0, 0, 0.9)" : "transparent")};
             color: ${(props) => (props.selectedSize === "" ? "black" : "white")};
             p:first-child {
-                opacity: ${(props) => (props.selectedSize === "" ? "0" : "1")};
+                opacity: ${(props) => (props.selectedSize !== "" ? "1" : "0")};
                 transition: opacity 0.3s;
+                
             }
             p:nth-child(2) {
                 opacity: ${(props) => (props.selectedsize === "" ? "1" : "0")};
@@ -131,7 +133,7 @@ export const Info = styled.div`
                 color: black;
             }
             div {
-                opacity: ${(props) => (props.selectedsize === "" ? "0" : "1")};
+                opacity: ${(props) => (props.selectedsize === "" ? "1" : "1")};
                 transition: opacity 0.3s;
             }
         }

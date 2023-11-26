@@ -15,7 +15,7 @@ export const Product = styled.figure`
     width: 50%;
   }
   .image-container {
-    /* min-height: 150px; */
+    min-height: 32.5vw;
     cursor: grab;
     overflow: hidden;
     background-color: white;
