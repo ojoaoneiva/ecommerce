@@ -1,7 +1,7 @@
 # [E-commerce](https://ecommercefrontend-ojoaoneiva.surge.sh/)
 
 <p align="center">
-  <img src="./template/src/assets/github/ecommerce.gif" alt="project gif" width="600">
+  <img src="./frontend/src/assets/github/ecommerce.gif" alt="project gif" width="600">
 </p>
 
 ## About:
@@ -46,10 +46,10 @@ The app's front-end is already deployed, but if you want to run the project in y
 ## Images:
 
 <p align="center">
-  <img src="./template/src/assets/github/mobile.jpg" alt="project print screen" width="600">  
-  <img src="./template/src/assets/github/1.JPG" alt="project print screen" width="600">  
-  <img src="./template/src/assets/github/2.JPG" alt="project print screen" width="600">  
-  <img src="./template/src/assets/github/3.JPG" alt="project print screen" width="600">  
-  <img src="./template/src/assets/github/4.JPG" alt="project print screen" width="600">  
-  <img src="./template/src/assets/github/5.JPG" alt="project print screen" width="600">  
+  <img src="./frontend/src/assets/github/mobile.jpg" alt="project print screen" width="600">  
+  <img src="./frontend/src/assets/github/1.JPG" alt="project print screen" width="600">  
+  <img src="./frontend/src/assets/github/2.JPG" alt="project print screen" width="600">  
+  <img src="./frontend/src/assets/github/3.JPG" alt="project print screen" width="600">  
+  <img src="./frontend/src/assets/github/4.JPG" alt="project print screen" width="600">  
+  <img src="./frontend/src/assets/github/5.JPG" alt="project print screen" width="600">  
 </p>
