@@ -73,9 +73,18 @@ z-index: 40;
     background-color: black;
     color: white;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: 20px;
+    p{
+        width: 50%;
+        font-size: 18px;
+        color: gray;
+        @media screen and (min-device-width : 280px) and (max-device-width : 500px) {
+            width: 80%;
+        }
+    }
 `
 
 export const NavBackground = styled.div`

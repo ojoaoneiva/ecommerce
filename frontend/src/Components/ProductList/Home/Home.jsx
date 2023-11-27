@@ -110,7 +110,10 @@ export const Home = () => {
         </Div>
       )}
       {isLoading ? (
-        <Loading>Loading...</Loading>
+        <Loading>
+          <h2>Loading...</h2>
+          <p>The project was deployed for free, so it may take a few seconds to load. If delayed, try refreshing the page and avoid having too many open tabs.</p>
+        </Loading>
       ) : (
         <>
           <Filter minFilter={minFilter} setMinFilter={setMinFilter} maxFilter={maxFilter} setMaxFilter={setMaxFilter} searchFilter={searchFilter} setSearchFilter={setSearchFilter} />
