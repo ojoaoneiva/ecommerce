@@ -1,4 +1,4 @@
-# [E-commerce](https://ecommercefrontend-ojoaoneiva.surge.sh/)
+# [E-commerce](https://ecommerce-joaoneiva.surge.sh/)
 
 <p align="center">
   <img src="./frontend/src/assets/prints/ecommerce.gif" alt="project gif" width="600">
@@ -20,7 +20,7 @@ The backend API and datasource enable user login and signup, and only if it's an
 - [x]  Create, edit and delete products if its logged as an Admin user
 
 ## Deploy:
-https://ecommercefrontend-ojoaoneiva.surge.sh/
+https://ecommerce-joaoneiva.surge.sh/
 
 ## How to run the project:
 The app's front-end is already deployed, but if you want to run the project in your machine, follow these steps:
