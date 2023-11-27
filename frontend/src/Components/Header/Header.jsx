@@ -105,14 +105,12 @@ export const Header = ({ headerColor }) => {
               <li onClick={() => handleNavigate("/Coats&Jackets-women")}>Coats& Jackets</li>
               <li onClick={() => handleNavigate("/Tops-women")}>Tops</li>
               <li onClick={() => handleNavigate("/T-Shirts-women")}>T-Shirts</li>
-              <li onClick={() => handleNavigate("/denim-women")}>denim</li>
             </ul>
           </div>
 
           <div>
             <h5>Acessories</h5>
             <ul>
-              <li onClick={() => handleNavigate("/Hats-women")}>Hats</li>
               <li onClick={() => handleNavigate("/Jewellery-women")}>Jewellery</li>
               <li onClick={() => handleNavigate("/Sunglasses-women")}>Sunglasses</li>
             </ul>

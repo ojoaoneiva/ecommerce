@@ -20,7 +20,7 @@ export const Login = () => {
     checkIfAdmin();
     if (localStorage.getItem("Etoken")) {
       setToken(true)
-      const decodedToken = jwtDecode(token);
+      const decodedToken = jwtDecode(localStorage.getItem("Etoken"));
       const userId = decodedToken.id;
       if (userId === "adm") {
         setIsAdmin(true)

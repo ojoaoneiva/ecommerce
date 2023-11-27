@@ -126,14 +126,12 @@ export const Modal = () => {
                 <li onClick={() => handleNavigate("/Coats&Jackets-women")}>Coats& Jackets</li>
                 <li onClick={() => handleNavigate("/Tops-women")}>Tops</li>
                 <li onClick={() => handleNavigate("/T-Shirts-women")}>T-Shirts</li>
-                <li onClick={() => handleNavigate("/denim-women")}>denim</li>
               </Ul>
             </div>
 
             <div>
               <h5 onClick={() => toggleOpen2('AcessoriesW')}>Acessories</h5>
               <Ul isOpen2={isOpen2['AcessoriesW']}>
-                <li onClick={() => handleNavigate("/Hats-women")}>Hats</li>
                 <li onClick={() => handleNavigate("/Jewellery-women")}>Jewellery</li>
                 <li onClick={() => handleNavigate("/Sunglasses-women")}>Sunglasses</li>
               </Ul>
