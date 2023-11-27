@@ -40,7 +40,7 @@ li,button{
 li:hover,button:hover{
     background-size: 100% 2px;
 }
-p{
+li>button>p{
     color:white;
     font-size: 20px;
     font-weight: 600;

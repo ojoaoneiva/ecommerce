@@ -139,3 +139,13 @@ export const Info = styled.div`
         }
     }
 `;
+
+export const Loading = styled.img`
+  width: 100%;
+  min-height: 100%;
+  opacity: 0.3;
+  background-color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

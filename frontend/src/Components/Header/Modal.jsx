@@ -1,7 +1,7 @@
 import { NavStyle, Background, Women, Men, Ul } from "./ModalStyled"
 import { Button, Line, Filter, } from "./HeaderStyled"
 import { useNavigate } from "react-router-dom";
-import { goToLogin } from "../router/Coordinator";
+import { goToLogin, goToHome } from "../router/Coordinator";
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { GlobalContext } from '../../Components/contexts/GlobalContext';
@@ -36,6 +36,7 @@ export const Modal = () => {
     onMouseLeave()
   };
 
+  const home = () => { goToHome(navigate); showHomepage() };
   const onAcount = () => { showHomepage(); goToLogin(navigate) };
   const onMouseWomen = () => { setWomenMenuOpen(true); setMenMenuOpen(false) };
   const onMouseMen = () => { setMenMenuOpen(true); setWomenMenuOpen(false) };
@@ -88,7 +89,7 @@ export const Modal = () => {
         <NavStyle >
           {(!menMenuOpen && !womenMenuOpen) && (
             <ul>
-              <li><Button value="all" onClick={showHomepage}>Jacquemus</Button></li>
+              <li><Button value="all" onClick={home}>Jacquemus</Button></li>
               <li>
                 <button className="women" value="allClothing" onClick={onMouseWomen}>
                   Women

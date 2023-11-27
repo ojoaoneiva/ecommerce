@@ -1,9 +1,9 @@
-import { Product, Div, Edit } from "./ProductCardStyle"
+import { Product, Div, Edit, Loading } from "./ProductCardStyle"
 import { useNavigate } from "react-router-dom";
 import { goToProductPage } from "../../router/Coordinator";
 import axios from "axios";
 import { EditProductForm } from "./EditProductForm";
-import { useState } from 'react';
+import { useState, useEffect } from "react";
 import { useInView } from 'react-intersection-observer';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -11,6 +11,7 @@ import { useRef } from 'react';
 import { useContext } from "react";
 import { GlobalContext } from '../../contexts/GlobalContext';
 import { BASE_URL } from "../../constants/BASE_URL";
+import loadingIcon from "../../../assets/1.gif"
 
 export const ProductCard = ({ product }) => {
 
@@ -22,6 +23,7 @@ export const ProductCard = ({ product }) => {
   const [ref, inView] = useInView({ triggerOnce: true });
   const sliderRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleDeleteClick = async () => {
     const isConfirmed = window.confirm("Are you sure you want to delete this product?");
@@ -77,13 +79,42 @@ export const ProductCard = ({ product }) => {
     }
   };
 
+  useEffect(() => {
+    const loadImage = (url) => {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.src = url;
+        img.onload = resolve;
+      });
+    };
+
+    const loadImages = async () => {
+      const imagesToLoad = [product.image_url_1, product.image_url_2, product.image_url_3].filter(Boolean);
+
+      try {
+        await Promise.all(imagesToLoad.map(loadImage));
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error loading images', error);
+      }
+    };
+
+    if (inView) {
+      loadImages();
+    }
+  }, [inView, product]);
+
   return (
     <Product
       ref={ref}
       className={`${inView ? 'visible' : ''} ${isDragging ? 'dragging' : ''}`}
       onClick={handleClick}
     >
-      <div className="image-container">
+        <div className="image-container">
+          {isLoading && (
+        <Loading src={loadingIcon}/>
+      )}
+{!isLoading && (<>
 
         <Slider className="slider" ref={sliderRef} {...sliderSettings}>
           <img
@@ -131,7 +162,9 @@ export const ProductCard = ({ product }) => {
           </div>
           <p lassName="description">{product.description}</p>
         </Div>
+        </>)}
       </div>
+      
 
       {isEditing && (
         <EditProductForm

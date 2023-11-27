@@ -8,17 +8,23 @@ import { goToSignUp, goToCreateProduct, goToHome } from "../router/Coordinator";
 import { useContext } from "react";
 import { GlobalContext } from '../../Components/contexts/GlobalContext';
 import { BASE_URL } from "../constants/BASE_URL";
+import { jwtDecode } from 'jwt-decode';
 
 export const Login = () => {
   const navigate = useNavigate();
   const context = useContext(GlobalContext);
-  const { checkIfAdmin, isAdmin, changeScreen, renderScreen } = context;
+  const { checkIfAdmin, isAdmin, setIsAdmin, changeScreen, renderScreen } = context;
   const [token, setToken] = useState(false);
 
   useEffect(() => {
     checkIfAdmin();
     if (localStorage.getItem("Etoken")) {
       setToken(true)
+      const decodedToken = jwtDecode(token);
+      const userId = decodedToken.id;
+      if (userId === "adm") {
+        setIsAdmin(true)
+      }
     } else {
       setToken(false)
     }

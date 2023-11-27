@@ -143,8 +143,8 @@ export const Header = ({ headerColor }) => {
         </Men>
       )}
       <NavMobile>
-        <a href="#HEADER"><button value="all" onClick={onChangeType}>Jacquemus</button></a>
-        <button onClick={showModal}>Menu</button>
+        <a href="#HEADER"><button value="all" onClick={() => goToHome(navigate)}>Jacquemus</button></a>
+        <button onClick={showModal}>Menu<p>{cont}</p></button>
       </NavMobile>
       <NavBackground className={headerColor === "dark" || type !== "" ? "black" : "white"} />
       <NavBackground />

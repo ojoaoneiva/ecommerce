@@ -15,12 +15,14 @@ export const Product = styled.figure`
     width: 50%;
   }
   .image-container {
-    min-height: 32.5vw;
+    min-height: 32.9vw;
     cursor: grab;
     overflow: hidden;
     background-color: white;
     .slider{
      margin-bottom: -4px;
+     opacity: 1;
+     transition: opacity 2s ease;
     }
 
     &:hover {
@@ -143,4 +145,14 @@ export const Edit = styled.div`
 }
   }
  
+`;
+
+export const Loading = styled.img`
+  width: 100%;
+  min-height: 100%;
+  opacity: 0.3;
+  background-color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

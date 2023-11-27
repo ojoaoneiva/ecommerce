@@ -1,12 +1,16 @@
 import { Header } from "../../Header/Header"
 import { Footer } from "../Footer"
 import { Container, Text } from "./CompanyStyled"
+import { useContext } from "react";
+import { GlobalContext } from '../../contexts/GlobalContext';
 
 export const Career = () => {
+    const context = useContext(GlobalContext);
+    const { changeScreen, cont, renderScreen } = context;
 
     return (
         <>
-        <Header/>
+        <Header headerColor="dark" cont={cont} changeScreen={changeScreen} />
         <Container >
             <h4>Company</h4>
             <di>
@@ -18,6 +22,7 @@ export const Career = () => {
                 </Text>
             </di>
         </Container>
+        {renderScreen()}
         <Footer/>
         </>
     )

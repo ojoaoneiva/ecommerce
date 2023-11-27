@@ -8,7 +8,7 @@ export const Items = ({ product, removeProduct }) => {
             <CartStyle>
                 <img
                     className="image-main"
-                    src={`${BASE_URL}/uploads/${product.image_url_1}`}
+                    src={product.image_url_1}
                     alt={product.name}
                 />
                 <div>

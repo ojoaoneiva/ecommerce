@@ -1,13 +1,16 @@
 import { Header } from "../../Header/Header"
 import { Footer } from "../Footer"
 import { Container, HeaderBackground, Text } from "./CompanyStyled"
+import { useContext } from "react";
+import { GlobalContext } from '../../contexts/GlobalContext';
 
 export const ContactUs = () => {
+    const context = useContext(GlobalContext);
+    const { changeScreen, cont, renderScreen } = context;
 
     return (
         <>
-        <Header headerColor="dark"/>
-        <HeaderBackground></HeaderBackground>
+        <Header headerColor="dark" cont={cont} changeScreen={changeScreen} />
         <Container >
             <h4>Company</h4>
             <di>
@@ -19,6 +22,7 @@ export const ContactUs = () => {
                 </Text>
             </di>
         </Container>
+        {renderScreen()}
         <Footer/>
         </>
     )

@@ -1,5 +1,5 @@
 import { Container } from "./FiltersStyle"
-import searchImage from "../../assets/Images/icons/search.png"
+import searchImage from "../../assets/search.png"
 
 export const Filter = ({ minFilter, setMinFilter, maxFilter, setMaxFilter, searchFilter, setSearchFilter }) => {
 

@@ -41,6 +41,7 @@ h2{
     font-weight: normal;
 }
     button:first-child{
+        cursor: pointer;
         font-size: 30px;
         position: fixed;
         border: transparent;
@@ -85,15 +86,27 @@ justify-content: space-between;
 position: absolute;
 bottom: 80px;
 right: 20px;
+button{
+    cursor: pointer;
+    border: 1px solid black;
+}
 button:first-child{
+    background-color: #dbdbdb;
     height: 50px;
     width: 50%;
+    &:hover{
+        background-color: #b5b5b5;
+    }
 }
 button:nth-child(2){
     height: 50px;
     width: 50%;
     background-color: black;
     color: white;
+    border: 1px solid black;
+    &:hover{
+        opacity: 0.9;
+    }
 }
 `
 

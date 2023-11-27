@@ -115,6 +115,7 @@ export const NavStyle = styled.nav`
 
     li,
     button {
+      cursor: pointer;
       height: 25px;
       font-size: 16px;
       text-decoration: none;
@@ -134,7 +135,7 @@ export const NavStyle = styled.nav`
     }
 
     p {
-      color: white;
+      color: black;
       font-size: 20px;
       font-weight: 600;
       position: relative;
@@ -175,6 +176,15 @@ export const NavMobile = styled.nav`
     color: black;
   }
 
+  p {
+      color: black;
+      font-size: 20px;
+      font-weight: 600;
+      position: relative;
+      bottom: 30px;
+      left: 40px;
+    }
+    
   @media screen and (min-device-width: 701px) {
     display: none;
   }

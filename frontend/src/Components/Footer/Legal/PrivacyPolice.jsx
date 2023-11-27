@@ -1,13 +1,16 @@
 import { Header } from "../../Header/Header"
 import { Footer } from "../Footer"
 import { Container, HeaderBackground, Text } from "./LegalStyled"
+import { useContext } from "react";
+import { GlobalContext } from '../../contexts/GlobalContext';
 
 export const PrivacyPolice = () => {
+    const context = useContext(GlobalContext);
+    const { changeScreen, cont, renderScreen } = context;
 
     return (
         <>
-        <Header headerColor="dark"/>
-        <HeaderBackground></HeaderBackground>
+        <Header headerColor="dark" cont={cont} changeScreen={changeScreen} />
         <Container >
             <h4>Legals</h4>
             <di>
@@ -43,6 +46,7 @@ export const PrivacyPolice = () => {
                 </Text>
             </di>
         </Container>
+        {renderScreen()}
         <Footer/>
         </>
     )
