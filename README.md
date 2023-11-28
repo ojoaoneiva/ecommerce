@@ -19,10 +19,12 @@ The backend API and datasource enable user login and signup, and only if it's an
 - [x]  Create users and sign up with registrated users
 - [x]  Create, edit and delete products if its logged as an Admin user
 
-## Deploy:
+Go to the API Docummenter [here](https://documenter.getpostman.com/view/27685475/2s9YeG4qUK)
+
+## Front-end deploy:
 https://ecommerce-joaoneiva.surge.sh/
 
-## How to run the project:
+## How to run the front-end project:
 The app's front-end is already deployed, but if you want to run the project in your machine, follow these steps:
 
 ```bash
@@ -30,7 +32,7 @@ The app's front-end is already deployed, but if you want to run the project in y
     git clone https://github.com/ojoaoneiva/ecommerce.git
 
 # Enter the front-end paste:
-    cd template
+    cd frontend
 
 # Install the app's dependencies:
     npm i
