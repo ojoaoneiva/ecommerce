@@ -41,17 +41,22 @@ const upload = multer({ storage: storage });
 
 app.get("/users", async (req: Request, res: Response) => {
     try {
-        const result = await db("users")
+        const results = await db("users");
+        const cleanedResults = results.map((user) => {
+            const { password, ...cleanedUser } = user;
+            return cleanedUser;
+        });
 
-        res.status(200).send(result)
+        res.status(200).send(cleanedResults);
     } catch (error: any) {
-        console.log(error)
+        console.error(error);
         if (res.statusCode === 200) {
-            res.status(500)
+            res.status(500);
         }
-        res.send(error.message)
+        res.send(error.message);
     }
-})
+});
+
 
 app.get("/products", async (req: Request, res: Response) => {
     try {
